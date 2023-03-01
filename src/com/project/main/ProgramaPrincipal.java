@@ -32,6 +32,7 @@ public class ProgramaPrincipal {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public int menuInici() {
 		System.out.println("-----------Benvingut a PeliMania-----------");
 		System.out.println("Què desitja fer?");
@@ -71,106 +72,115 @@ public class ProgramaPrincipal {
 		guardarInformacioUsuari(nom, cognoms, correu, contrassenya, poblacio, rol, dataNaixement, id);
 		// guardar la contrassenya_usuari en contrassenyesUsuaris.txt
 		guardarContrassenyaUsuari(contrassenya, nom);
-		// ara creem l'objecte usuari i així es crearan els seus fitxers automaticament
+		// ara creem l'objecte usuari i els seus fitxers aplicant el metode
+		@SuppressWarnings("unused")
+		Usuari user = new Usuari(nom, cognoms, correu, contrassenya, poblacio, dataNaixement, id);
+		user.creacioCarpetaFitxer();
 
 	}
 
 	public String comprovacioNom(Scanner entrada, File f) throws FileNotFoundException {
-		try (Scanner lectorFitxer = new Scanner(f)) {
-			boolean troba = false;
-			String nom = "";
-			// per a evitar desbordament de línia i que no genere un salt de pàgina fixem la
-			// longitud en uns 30 per al nom i 40 pals cognoms, 60 pal correu, i 30 per a la
-			// poblacio
 
-			do {
-				System.out.println("Introdueix el teu nom:");
-				nom = entrada.nextLine().trim();
-				if (nom.contains(";")) {
-					System.out.println("No pots usar el símbol \";");
-				} else if (nom.length() < 1 || nom.length() > 30) {
-					System.out.println("La longitud del nom ha de tindre entre 1 i 20 caràcters. Torna a provar.");
-				} else {
-					while (lectorFitxer.hasNextLine() && !troba) {
-						String[] info = (lectorFitxer.nextLine()).split(";");
-						if (info[0].equals(nom)) {
-							System.out.println("El nom introduït no està disponible. Torna a provar.");
-							break;
-						} else {
-							troba = true;
-						}
-
+		boolean troba = false;
+		String nom = "";
+		// per a evitar desbordament de línia i que no genere un salt de pàgina fixem la
+		// longitud en uns 30 per al nom i 40 pals cognoms, 60 pal correu, i 30 per a la
+		// poblacio
+		System.out.println("Introdueix el teu nom:");
+		do {
+			nom = entrada.nextLine().trim();
+			if (nom.contains(";")) {
+				System.out.println("No pots usar el símbol \";");
+			} else if (nom.length() < 1 || nom.length() > 30) {
+				System.out.println("La longitud del nom ha de tindre entre 1 i 20 caràcters. Torna a provar.");
+			} else {
+				int comptadorOcurrencies = 0;
+				Scanner lectorFitxer = new Scanner(f);
+				while (lectorFitxer.hasNextLine()) {
+					String[] info = (lectorFitxer.nextLine()).split(";");
+					if (info[0].equals(nom)) {
+						comptadorOcurrencies++;
 					}
 				}
+				if (comptadorOcurrencies == 0) {
+					troba = true;
+					lectorFitxer.close();
+				} else {
+					System.out.println("El nom introduït no està disponible. Torna a provar.");
+				}
+			}
 
-			} while (!troba);
-			lectorFitxer.close();
-			return nom;
-		}
+		} while (!troba);
+		return nom;
+
 	}
 
 	public String comprovacioCognoms(Scanner entrada, File f) throws FileNotFoundException {
 
-		try (Scanner lectorFitxer = new Scanner(f)) {
-			boolean troba = false;
-			String cognom = null;
-			do {
-				System.out.println("Introdueix el teu cognom:");
-				cognom = entrada.nextLine().trim();
-				if (cognom.contains(";")) {
-					System.out.println("No pots usar el símbol \";");
-				} else if (cognom.length() < 1 || cognom.length() > 40) {
-					System.out.println("La longitud del cognom ha de tindre entre 1 i 40 caràcters.");
-				} else {
-					while (lectorFitxer.hasNextLine() && !troba) {
-						String[] info = (lectorFitxer.nextLine()).split(";");
-						if (info[1].equals(cognom)) {
-							System.out.println("El cognom introduït no està disponible");
-							break;
-						} else {
-							troba = true;
-						}
-
+		boolean troba = false;
+		String cognom = null;
+		System.out.println("Introdueix el teu cognom:");
+		do {
+			cognom = entrada.nextLine().trim();
+			if (cognom.contains(";")) {
+				System.out.println("No pots usar el símbol \";");
+			} else if (cognom.length() < 1 || cognom.length() > 40) {
+				System.out.println("La longitud del cognom ha de tindre entre 1 i 40 caràcters.");
+			} else {
+				int comptadorOcurrencies = 0;
+				Scanner lectorFitxer = new Scanner(f);
+				while (lectorFitxer.hasNextLine()) {
+					String[] info = (lectorFitxer.nextLine()).split(";");
+					if (info[1].equals(cognom)) {
+						comptadorOcurrencies++;
 					}
 				}
+				if (comptadorOcurrencies == 0) {
+					troba = true;
+					lectorFitxer.close();
+				} else {
+					System.out.println("El cognom introduït no està disponible. Torna a provar.");
+					comptadorOcurrencies = 0;
+				}
+			}
 
-			} while (!troba);
-			lectorFitxer.close();
-			return cognom;
-		}
+		} while (!troba);
+
+		return cognom;
 	}
 
 	public String comprovacioCorreu(Scanner entrada, File f) throws FileNotFoundException {
-		try (Scanner lectorFitxer = new Scanner(f)) {
-			boolean troba = false;
-			String correu = null;
+		boolean troba = false;
+		String correu = null;
+		System.out.println("Introdueix el teu correu:");
+		do {
 
-			do {
-				System.out.println("Introdueix el teu correu:");
-				correu = entrada.nextLine().trim();
-				boolean coincideix = Pattern.compile("[\\w-\\.]+@[\\w-]+\\.[\\w]{2,4}").matcher(correu).matches();
-				if (coincideix == false) {
-					System.out.println("El correu introduït no presenta un format vàlid.");
-				} else if (correu.length() > 60) {
-					System.out.println("La longitud del correu no pot superar els 60 caràcters.");
-				} else {
-					while (lectorFitxer.hasNextLine() && !troba) {
-						String[] info = (lectorFitxer.nextLine()).split(";");
-						if (info[2].equals(correu)) {
-							System.out.println("El correu introduït no està disponible");
-							break;
-						} else {
-							troba = true;
-						}
-
+			correu = entrada.nextLine().trim();
+			boolean coincideix = Pattern.compile("[\\w-\\.]+@[\\w-]+\\.[\\w]{2,4}").matcher(correu).matches();
+			if (coincideix == false) {
+				System.out.println("El correu introduït no presenta un format vàlid.");
+			} else if (correu.length() > 60) {
+				System.out.println("La longitud del correu no pot superar els 60 caràcters.");
+			} else {
+				int comptadorOcurrencies = 0;
+				Scanner lectorFitxer = new Scanner(f);
+				while (lectorFitxer.hasNextLine()) {
+					String[] info = (lectorFitxer.nextLine()).split(";");
+					if (info[2].equals(correu)) {
+						comptadorOcurrencies++;
 					}
-
+				}
+				if (comptadorOcurrencies == 0) {
+					lectorFitxer.close();
+					troba = true;
+				} else {
+					System.out.println("El correu introduït no està disponible. Torna a provar.");
 				}
 
-			} while (!troba);
-			lectorFitxer.close();
-			return correu;
-		}
+			}
+
+		} while (!troba);
+		return correu;
 	}
 
 	public String comprovacioContrassenya(Scanner entrada) {
@@ -273,7 +283,7 @@ public class ProgramaPrincipal {
 		try {
 			FileWriter fw = new FileWriter("infoUsuaris.txt", true);// true per a q escriga al final del fitxer
 			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(infoUsuari);
+			bw.write(infoUsuari.concat("\n"));
 			bw.flush();// escrivim al fitxer
 			bw.close();
 		} catch (IOException e) {
@@ -288,7 +298,7 @@ public class ProgramaPrincipal {
 		try {
 			FileWriter fw = new FileWriter("contrassenyesUsuaris.txt", true);// true per a q escriga al final del fitxer
 			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(contrassenyaNom);
+			bw.write(contrassenyaNom.concat("\n"));
 			bw.flush();// escrivim al fitxer
 			bw.close();
 		} catch (IOException e) {
