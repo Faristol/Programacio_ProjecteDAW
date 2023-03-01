@@ -148,7 +148,7 @@ public class ProgramaPrincipal {
 			do {
 				System.out.println("Introdueix el teu correu:");
 				correu = entrada.nextLine().trim();
-				boolean coincideix = Pattern.compile("^[\\w-\\.]+@[\\w-]+\\.[\\w]{2,4}$").matcher(correu).matches();
+				boolean coincideix = Pattern.compile("[\\w-\\.]+@[\\w-]+\\.[\\w]{2,4}").matcher(correu).matches();
 				if (coincideix == false) {
 					System.out.println("El correu introduït no presenta un format vàlid.");
 				} else if (correu.length() > 60) {
@@ -179,7 +179,7 @@ public class ProgramaPrincipal {
 		do {
 			System.out.println("Introdueix la contrassenya:");
 			contrassenya = entrada.nextLine().trim();
-			boolean valida = Pattern.compile("^(?!.*;)[\\w!@#$%^&*()-+=]{6,20}$").matcher(contrassenya).matches();
+			boolean valida = Pattern.compile("(?!.*;)[\\w!@#$%^&*()-+=]{6,20}").matcher(contrassenya).matches();
 			if (valida == false) {
 				System.out.println("La contrassenya ha de tindre entre 6 i 20 caràcters. No pots usar el símbol \";");
 			} else {
@@ -203,7 +203,7 @@ public class ProgramaPrincipal {
 		do {
 			System.out.println("Introdueix la població");
 			poblacio = entrada.nextLine().trim();
-			boolean valida = Pattern.compile("^(?iu)[a-zà-ÿ\\s]+$").matcher(poblacio).matches();
+			boolean valida = Pattern.compile("(?iu)[a-zà-ÿ\\s]+").matcher(poblacio).matches();
 			if (valida == false) {
 				System.out.println("Població no vàlida");
 			} else if (poblacio.length() < 0 || poblacio.length() > 30) {
