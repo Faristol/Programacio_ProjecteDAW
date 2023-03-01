@@ -1,13 +1,14 @@
 package com.project.main;
 
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class ProgramaPrincipal {
-	private int acces = 0;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -16,10 +17,16 @@ public class ProgramaPrincipal {
 	}
 
 	public void inici() {
-
-		acces = menuInici();
+		int acces = menuInici();
 		if (acces == 1) {
-			registre();
+			File f = new File("infoUsuaris.txt");
+			Scanner entrada = new Scanner(System.in);
+			try {
+				registre(entrada, f);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else {
 			iniciarSessio();
 		}
@@ -47,50 +54,48 @@ public class ProgramaPrincipal {
 				System.out.println("Has de polsar 1 per a registrar-te o 2 per a iniciar sessió.");
 			}
 		} while (!troba);
-		entradaInici.close();
-		return acces;
+		return i;
 	}
 
-	@SuppressWarnings("unused")
-	public void registre() {
-		Scanner entrada = new Scanner(System.in);
-		String nom = comprovacioNom(entrada);
-		String cognoms = comprovacioCognoms(entrada);
-		String correu = comprovacioCorreu(entrada);
+	public void registre(Scanner entrada, File f) throws FileNotFoundException {
+
+		String nom = comprovacioNom(entrada, f);
+		String cognoms = comprovacioCognoms(entrada, f);
+		String correu = comprovacioCorreu(entrada, f);
 		String contrassenya = comprovacioContrassenya(entrada);
 		String poblacio = comprovacioPoblacio(entrada);
 		String dataNaixement = comprovacioDataNaixement(entrada);
 		String rol = comprovacioRol(entrada);
 		String id = obtencioId();
-		Scanner lectorFitxer = new Scanner("infoUsuaris.txt");
 		// guardem la informació de l'usuari en el registre d'usuaris (infoUsuaris.txt)
 		guardarInformacioUsuari(nom, cognoms, correu, contrassenya, poblacio, rol, dataNaixement, id);
 		// guardar la contrassenya_usuari en contrassenyesUsuaris.txt
-		guardarContrassenyaUsuari(contrassenya,nom);
-		//ara creem l'objecte usuari i així es crearan els seus fitxers automaticament
-		
+		guardarContrassenyaUsuari(contrassenya, nom);
+		// ara creem l'objecte usuari i així es crearan els seus fitxers automaticament
 
 	}
 
-	public String comprovacioNom(Scanner entrada) {
-		try (Scanner lectorFitxer = new Scanner("infoUsuaris.txt")) {
+	public String comprovacioNom(Scanner entrada, File f) throws FileNotFoundException {
+		try (Scanner lectorFitxer = new Scanner(f)) {
 			boolean troba = false;
-			String nom = null;
+			String nom = "";
 			// per a evitar desbordament de línia i que no genere un salt de pàgina fixem la
 			// longitud en uns 30 per al nom i 40 pals cognoms, 60 pal correu, i 30 per a la
 			// poblacio
+
 			do {
 				System.out.println("Introdueix el teu nom:");
 				nom = entrada.nextLine().trim();
 				if (nom.contains(";")) {
 					System.out.println("No pots usar el símbol \";");
 				} else if (nom.length() < 1 || nom.length() > 30) {
-					System.out.println("La longitud del nom ha de tindre entre 1 i 20 caràcters.");
+					System.out.println("La longitud del nom ha de tindre entre 1 i 20 caràcters. Torna a provar.");
 				} else {
-					while (lectorFitxer.hasNextLine() || troba == true) {
+					while (lectorFitxer.hasNextLine() && !troba) {
 						String[] info = (lectorFitxer.nextLine()).split(";");
 						if (info[0].equals(nom)) {
-							System.out.println("El nom introduït no està disponible");
+							System.out.println("El nom introduït no està disponible. Torna a provar.");
+							break;
 						} else {
 							troba = true;
 						}
@@ -104,8 +109,9 @@ public class ProgramaPrincipal {
 		}
 	}
 
-	public String comprovacioCognoms(Scanner entrada) {
-		try (Scanner lectorFitxer = new Scanner("infoUsuaris.txt")) {
+	public String comprovacioCognoms(Scanner entrada, File f) throws FileNotFoundException {
+
+		try (Scanner lectorFitxer = new Scanner(f)) {
 			boolean troba = false;
 			String cognom = null;
 			do {
@@ -116,10 +122,11 @@ public class ProgramaPrincipal {
 				} else if (cognom.length() < 1 || cognom.length() > 40) {
 					System.out.println("La longitud del cognom ha de tindre entre 1 i 40 caràcters.");
 				} else {
-					while (lectorFitxer.hasNextLine() || troba == true) {
+					while (lectorFitxer.hasNextLine() && !troba) {
 						String[] info = (lectorFitxer.nextLine()).split(";");
 						if (info[1].equals(cognom)) {
 							System.out.println("El cognom introduït no està disponible");
+							break;
 						} else {
 							troba = true;
 						}
@@ -133,8 +140,8 @@ public class ProgramaPrincipal {
 		}
 	}
 
-	public String comprovacioCorreu(Scanner entrada) {
-		try (Scanner lectorFitxer = new Scanner("infoUsuaris.txt")) {
+	public String comprovacioCorreu(Scanner entrada, File f) throws FileNotFoundException {
+		try (Scanner lectorFitxer = new Scanner(f)) {
 			boolean troba = false;
 			String correu = null;
 
@@ -147,10 +154,11 @@ public class ProgramaPrincipal {
 				} else if (correu.length() > 60) {
 					System.out.println("La longitud del correu no pot superar els 60 caràcters.");
 				} else {
-					while (lectorFitxer.hasNextLine() || troba == true) {
+					while (lectorFitxer.hasNextLine() && !troba) {
 						String[] info = (lectorFitxer.nextLine()).split(";");
 						if (info[2].equals(correu)) {
 							System.out.println("El correu introduït no està disponible");
+							break;
 						} else {
 							troba = true;
 						}
@@ -236,13 +244,12 @@ public class ProgramaPrincipal {
 			}
 
 		} while (!rol.equals("ROL_USUARI"));
-		entrada.nextLine();
-		entrada.close();
 		return rol;
 	}
 
-	public String obtencioId() {
-		Scanner lectorFitxer = new Scanner("infoUsuaris.txt");
+	public String obtencioId() throws FileNotFoundException {
+		File f = new File("infoUsuaris.txt");
+		Scanner lectorFitxer = new Scanner(f);
 		int aux = 0;
 		// ometem les dades de la primera linia amb lectorFitxer.nextLine()
 		lectorFitxer.nextLine();
@@ -262,35 +269,33 @@ public class ProgramaPrincipal {
 		String infoUsuari = nom.concat(";").concat(cognoms).concat(";").concat(correu).concat(";").concat(contrassenya)
 				.concat(";").concat(poblacio).concat(";").concat(rol).concat(";").concat(dataNaixement).concat(";")
 				.concat(id).concat(";");
-		
+
 		try {
-			FileWriter fw = new FileWriter("infoUsuaris.txt", true);//true per a q escriga al final del fitxer
+			FileWriter fw = new FileWriter("infoUsuaris.txt", true);// true per a q escriga al final del fitxer
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(infoUsuari);
-			bw.newLine();
 			bw.flush();// escrivim al fitxer
 			bw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
 	}
-	public void guardarContrassenyaUsuari(String contrassenya,String nom) {
+
+	public void guardarContrassenyaUsuari(String contrassenya, String nom) {
 		String contrassenyaNom = contrassenya.concat("_").concat(nom);
 		try {
-			FileWriter fw = new FileWriter("contrassenyesUsuaris.txt", true);//true per a q escriga al final del fitxer
+			FileWriter fw = new FileWriter("contrassenyesUsuaris.txt", true);// true per a q escriga al final del fitxer
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(contrassenyaNom);
-			bw.newLine();//salt de linia
 			bw.flush();// escrivim al fitxer
 			bw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void iniciarSessio() {

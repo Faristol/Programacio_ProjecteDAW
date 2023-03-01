@@ -1,2 +1,2 @@
 NOM;COGNOMS;CORREU;CONTRASSENYA;POBLACIO;ROL;DATANAIXEMENT;ID;
-admin;admin;admin@gmail.com;eljefe;admin;ROL_ADMIN;0;
+admin;admin;admin@gmail.com;eljefe;admin;ROL_ADMIN;01/01/1900;0;
