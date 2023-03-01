@@ -1,20 +1,21 @@
 package com.project.main;
 
+import java.io.File;
+import java.io.IOException;
+
 public class Usuari extends Usuaris {
 	private String nom = null;
 	private String cognoms = null;
 	private String correuElectronic = null;
 	private String contrassenya = null;
 	private String poblacio = null;
-	private final String rol = "ROL_USUARI";
+	private String rol = null;
 	private String dataNaixement = null;
-	private int id;
-//	private String nomCarpeta = valueOf(id)+ correuElectronic;
-//	static {
-//		
-//		File carpetaUsuari = new File("carpetesUsuaris/"+)
-//
-//	}
+	private String id=null;
+	
+
+	
+	
 
 	public String getRol() {
 		return rol;
@@ -69,9 +70,20 @@ public class Usuari extends Usuaris {
 		this.dataNaixement = dataNaixement;
 	}
 
-	public Usuari() {
-		// TODO Auto-generated constructor stub
+	public String getId() {
+		return id;
 	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 
 	@Override
 	public void crearPeli() {
@@ -144,9 +156,36 @@ public class Usuari extends Usuaris {
 		// TODO Auto-generated method stub
 
 	}
+	public void creacioCarpetaFitxer() {
+		File carpetaUsuari = new File("carpetesUsuaris/"+this.id+this.correuElectronic.substring(0,correuElectronic.indexOf("@")));
+		carpetaUsuari.mkdir();
+		File llistaPelis = new File(carpetaUsuari.getParent()+"/"+carpetaUsuari.getName()+"/llistaPelis.llista");
+		try {
+			llistaPelis.createNewFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		File llistaActors = new File(carpetaUsuari.getParent()+"/"+carpetaUsuari.getName()+"/llistaActors.llista");
+		try {
+			llistaActors.createNewFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		File llistaDirectors = new File(carpetaUsuari.getParent()+"/"+carpetaUsuari.getName()+"/llistaDirectors.llista");
+		try {
+			llistaDirectors.createNewFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
 
 	public Usuari(String nom, String cognoms, String correuElectronic, String contrassenya, String poblacio,
-			String dataNaixement) {
+			String dataNaixement, String id) {
 		super();
 		this.nom = nom;
 		this.cognoms = cognoms;
@@ -154,6 +193,9 @@ public class Usuari extends Usuaris {
 		this.contrassenya = contrassenya;
 		this.poblacio = poblacio;
 		this.dataNaixement = dataNaixement;
+		this.id = id;
 	}
+
+	
 
 }
