@@ -1,7 +1,6 @@
 package com.project.main;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ProgramaPrincipal {
@@ -17,13 +16,8 @@ public class ProgramaPrincipal {
 		if (acces == 1) {
 			File f = new File("infoUsuaris.txt");
 			Scanner entrada = new Scanner(System.in);
-			try {
-				Registre r = new Registre();
-				r.registre(entrada, f);
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			Registre r = new Registre();
+			r.registre(entrada, f);
 		} else {
 			IniciarSessio is = new IniciarSessio();
 			is.iniciarSessio();
@@ -55,9 +49,5 @@ public class ProgramaPrincipal {
 		} while (!troba);
 		return i;
 	}
-
-	
-
-	
 
 }

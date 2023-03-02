@@ -11,16 +11,11 @@ public class Usuari extends Usuaris {
 	private String poblacio = null;
 	private String rol = null;
 	private String dataNaixement = null;
-	private String id=null;
-	
-
-	
-	
+	private String id = null;
 
 	public String getRol() {
 		return rol;
 	}
-
 
 	public String getNom() {
 		return nom;
@@ -74,16 +69,13 @@ public class Usuari extends Usuaris {
 		return id;
 	}
 
-
 	public void setId(String id) {
 		this.id = id;
 	}
 
-
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
-
 
 	@Override
 	public void crearPeli() {
@@ -156,24 +148,28 @@ public class Usuari extends Usuaris {
 		// TODO Auto-generated method stub
 
 	}
+
 	public void creacioCarpetaFitxer() {
-		File carpetaUsuari = new File("carpetesUsuaris/"+this.id+this.correuElectronic.substring(0,correuElectronic.indexOf("@")));
+		File carpetaUsuari = new File(
+				"carpetesUsuaris/" + this.id + this.correuElectronic.substring(0, correuElectronic.indexOf("@")));
 		carpetaUsuari.mkdir();
-		File llistaPelis = new File(carpetaUsuari.getParent()+"/"+carpetaUsuari.getName()+"/llistaPelis.llista");
+		File llistaPelis = new File(carpetaUsuari.getParent() + "/" + carpetaUsuari.getName() + "/llistaPelis.llista");
 		try {
 			llistaPelis.createNewFile();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		File llistaActors = new File(carpetaUsuari.getParent()+"/"+carpetaUsuari.getName()+"/llistaActors.llista");
+		File llistaActors = new File(
+				carpetaUsuari.getParent() + "/" + carpetaUsuari.getName() + "/llistaActors.llista");
 		try {
 			llistaActors.createNewFile();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		File llistaDirectors = new File(carpetaUsuari.getParent()+"/"+carpetaUsuari.getName()+"/llistaDirectors.llista");
+		File llistaDirectors = new File(
+				carpetaUsuari.getParent() + "/" + carpetaUsuari.getName() + "/llistaDirectors.llista");
 		try {
 			llistaDirectors.createNewFile();
 		} catch (IOException e) {
@@ -182,7 +178,6 @@ public class Usuari extends Usuaris {
 		}
 
 	}
-
 
 	public Usuari(String nom, String cognoms, String correuElectronic, String contrassenya, String poblacio,
 			String dataNaixement, String id) {
@@ -195,7 +190,5 @@ public class Usuari extends Usuaris {
 		this.dataNaixement = dataNaixement;
 		this.id = id;
 	}
-
-	
 
 }

@@ -9,7 +9,11 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Registre {
-	public void registre(Scanner entrada, File f) throws FileNotFoundException {
+	public void registre(Scanner entrada, File f) {
+		System.out.println();
+		System.out.println("-".repeat(43));
+		System.out.println("-".repeat(17)+"Registre"+"-".repeat(18));
+		System.out.println("-".repeat(43));
 
 		String nom = comprovacioNom(entrada, f);
 		String cognoms = comprovacioCognoms(entrada, f);
@@ -32,7 +36,7 @@ public class Registre {
 
 	}
 
-	public String comprovacioNom(Scanner entrada, File f) throws FileNotFoundException {
+	public String comprovacioNom(Scanner entrada, File f) {
 
 		boolean troba = false;
 		String nom = "";
@@ -48,19 +52,26 @@ public class Registre {
 				System.out.println("La longitud del nom ha de tindre entre 1 i 20 caràcters. Torna a provar.");
 			} else {
 				int comptadorOcurrencies = 0;
-				Scanner lectorFitxer = new Scanner(f);
-				while (lectorFitxer.hasNextLine()) {
-					String[] info = (lectorFitxer.nextLine()).split(";");
-					if (info[0].equals(nom)) {
-						comptadorOcurrencies++;
+
+				try {
+					Scanner lectorFitxer = new Scanner(f);
+					while (lectorFitxer.hasNextLine()) {
+						String[] info = (lectorFitxer.nextLine()).split(";");
+						if (info[0].equals(nom)) {
+							comptadorOcurrencies++;
+						}
 					}
+					if (comptadorOcurrencies == 0) {
+						troba = true;
+						lectorFitxer.close();
+					} else {
+						System.out.println("El nom introduït no està disponible. Torna a provar.");
+					}
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				if (comptadorOcurrencies == 0) {
-					troba = true;
-					lectorFitxer.close();
-				} else {
-					System.out.println("El nom introduït no està disponible. Torna a provar.");
-				}
+
 			}
 
 		} while (!troba);
@@ -68,7 +79,7 @@ public class Registre {
 
 	}
 
-	public String comprovacioCognoms(Scanner entrada, File f) throws FileNotFoundException {
+	public String comprovacioCognoms(Scanner entrada, File f) {
 
 		boolean troba = false;
 		String cognom = null;
@@ -81,20 +92,27 @@ public class Registre {
 				System.out.println("La longitud del cognom ha de tindre entre 1 i 40 caràcters.");
 			} else {
 				int comptadorOcurrencies = 0;
-				Scanner lectorFitxer = new Scanner(f);
-				while (lectorFitxer.hasNextLine()) {
-					String[] info = (lectorFitxer.nextLine()).split(";");
-					if (info[1].equals(cognom)) {
-						comptadorOcurrencies++;
+
+				try {
+					Scanner lectorFitxer = new Scanner(f);
+					while (lectorFitxer.hasNextLine()) {
+						String[] info = (lectorFitxer.nextLine()).split(";");
+						if (info[1].equals(cognom)) {
+							comptadorOcurrencies++;
+						}
 					}
+					if (comptadorOcurrencies == 0) {
+						troba = true;
+						lectorFitxer.close();
+					} else {
+						System.out.println("El cognom introduït no està disponible. Torna a provar.");
+						comptadorOcurrencies = 0;
+					}
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				if (comptadorOcurrencies == 0) {
-					troba = true;
-					lectorFitxer.close();
-				} else {
-					System.out.println("El cognom introduït no està disponible. Torna a provar.");
-					comptadorOcurrencies = 0;
-				}
+
 			}
 
 		} while (!troba);
@@ -102,7 +120,7 @@ public class Registre {
 		return cognom;
 	}
 
-	public String comprovacioCorreu(Scanner entrada, File f) throws FileNotFoundException {
+	public String comprovacioCorreu(Scanner entrada, File f) {
 		boolean troba = false;
 		String correu = null;
 		System.out.println("Introdueix el teu correu:");
@@ -116,18 +134,24 @@ public class Registre {
 				System.out.println("La longitud del correu no pot superar els 60 caràcters.");
 			} else {
 				int comptadorOcurrencies = 0;
-				Scanner lectorFitxer = new Scanner(f);
-				while (lectorFitxer.hasNextLine()) {
-					String[] info = (lectorFitxer.nextLine()).split(";");
-					if (info[2].equals(correu)) {
-						comptadorOcurrencies++;
+
+				try {
+					Scanner lectorFitxer = new Scanner(f);
+					while (lectorFitxer.hasNextLine()) {
+						String[] info = (lectorFitxer.nextLine()).split(";");
+						if (info[2].equals(correu)) {
+							comptadorOcurrencies++;
+						}
 					}
-				}
-				if (comptadorOcurrencies == 0) {
-					lectorFitxer.close();
-					troba = true;
-				} else {
-					System.out.println("El correu introduït no està disponible. Torna a provar.");
+					if (comptadorOcurrencies == 0) {
+						lectorFitxer.close();
+						troba = true;
+					} else {
+						System.out.println("El correu introduït no està disponible. Torna a provar.");
+					}
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 
 			}
@@ -210,21 +234,30 @@ public class Registre {
 		return rol;
 	}
 
-	public String obtencioId() throws FileNotFoundException {
+	public String obtencioId() {
 		File f = new File("infoUsuaris.txt");
-		Scanner lectorFitxer = new Scanner(f);
+		Scanner lectorFitxer;
 		int aux = 0;
-		// ometem les dades de la primera linia amb lectorFitxer.nextLine()
-		lectorFitxer.nextLine();
-		while (lectorFitxer.hasNextLine()) {
-			String[] info = (lectorFitxer.nextLine()).split(";");
-			if (Integer.valueOf(info[7]) > aux) {
-				aux = Integer.valueOf(info[7]);
+		try {
+			lectorFitxer = new Scanner(f);
+			// ometem les dades de la primera linia amb lectorFitxer.nextLine()
+			lectorFitxer.nextLine();
+			while (lectorFitxer.hasNextLine()) {
+				String[] info = (lectorFitxer.nextLine()).split(";");
+				if (Integer.valueOf(info[7]) > aux) {
+					aux = Integer.valueOf(info[7]);
+				}
 			}
+			lectorFitxer.close();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		lectorFitxer.close();
 		String id = String.valueOf(aux + 1);
 		return id;
+		
+		
 	}
 
 	public void guardarInformacioUsuari(String nom, String cognoms, String correu, String contrassenya, String poblacio,

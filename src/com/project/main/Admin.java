@@ -1,17 +1,18 @@
 package com.project.main;
 
 public class Admin extends Usuaris {
-	private String nom="admin";
-	private String cognoms="admin";
-	private String correuElectronic="admin@gmail.com";
-	private String contrassenya="eljefe";
-	private String poblacio="admin";
-	private final String rol="ROL_ADMIN";
-	private String dataNaixement="01/01/01";
-	
+	private String nom = "admin";
+	private String cognoms = "admin";
+	private String correuElectronic = "admin@gmail.com";
+	private String contrassenya = "eljefe";
+	private String poblacio = "admin";
+	private final String rol = "ROL_ADMIN";
+	private String dataNaixement = "01/01/01";
+
 	static {
-		
+
 	}
+
 	public String getRol() {
 		return rol;
 	}
