@@ -33,6 +33,7 @@ public class Registre {
 		// inmediatament portem a l'usuari a iniciar sessió
 		IniciarSessio is = new IniciarSessio();
 		is.iniciarSessio();
+		
 
 	}
 

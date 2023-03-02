@@ -15,6 +15,7 @@ public class IniciarSessio {
 		String[] infoUser = infoUser(nom);
 		//en la info obtesa de l'usuari s'accedirà a la carpeta seua
 		benvinguda(infoUser[0],infoUser[1]);
+		//aci s'hauran de carregar els ArrayList amb Serialitzable
 
 	}
 

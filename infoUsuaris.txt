@@ -5,3 +5,4 @@ HOLA;HOLA;HOLA@GMAIL.COM;HOLAHOLA;HOLAHOLA;ROL_USUARI;23/10/1920;2;
 pepe;pepe;pepe@gmail.com;pepepepe;pepepepe;ROL_USUARI;12/01/1923;3;
 paco;paco;paco@gmail.com;pacopaco;pacolandia;ROL_USUARI;12/03/1945;4;
 aigua;aigua bona;aiguabona@gmail.com;aiguaaigua;aiguaaigua;ROL_USUARI;12/02/2000;5;
+pepe garrofera;pa negre;elgarrofer@gmail.com;pepepepe;Xativa;ROL_USUARI;23/01/1985;6;
