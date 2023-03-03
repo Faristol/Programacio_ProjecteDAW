@@ -15,6 +15,12 @@ public class LlistesGenerals implements Serializable {
 	public static ArrayList<Pelis> pelisGenerals = new ArrayList<>();
 	public static ArrayList<Actors> actorsGenerals = new ArrayList<>();
 	public static ArrayList<Directors> directorsGenerals = new ArrayList<>();
+	
+	static {
+		guardarArrayListPelisGeneral();
+		guardarArrayListActorsGeneral();
+		guardarArrayListDirectorsGeneral();
+	}
 
 	public static ArrayList<Pelis> getPelisGenerals() {
 		return pelisGenerals;
@@ -40,7 +46,7 @@ public class LlistesGenerals implements Serializable {
 		LlistesGenerals.directorsGenerals = directorsGenerals;
 	}
 
-	public void guardarArrayListPelisGeneral() {
+	public static void guardarArrayListPelisGeneral() {
 		try {
 			FileOutputStream fos = new FileOutputStream("arrayListsGenerals/ArrayListGeneralPelis.txt");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -53,7 +59,7 @@ public class LlistesGenerals implements Serializable {
 
 	}
 
-	public void guardarArrayListActorsGeneral() {
+	public static void guardarArrayListActorsGeneral() {
 		try {
 			FileOutputStream fos = new FileOutputStream("arrayListsGenerals/ArrayListGeneralActors.txt");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -66,7 +72,7 @@ public class LlistesGenerals implements Serializable {
 
 	}
 
-	public void guardarArrayListDirectorsGeneral() {
+	public static void guardarArrayListDirectorsGeneral() {
 		try {
 			FileOutputStream fos = new FileOutputStream("arrayListsGenerals/ArrayListGeneralDirectors.txt");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -80,7 +86,7 @@ public class LlistesGenerals implements Serializable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void carregarArrayListPelisGeneral() {
+	public static void carregarArrayListPelisGeneral() {
 		try {
 			FileInputStream fis = new FileInputStream("arrayListsGenerals/ArrayListGeneralPelis.txt");
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -94,7 +100,7 @@ public class LlistesGenerals implements Serializable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void carregarArrayListActorsGeneral() {
+	public static void carregarArrayListActorsGeneral() {
 		try {
 			FileInputStream fis = new FileInputStream("arrayListsGenerals/ArrayListGeneralActors.txt");
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -108,7 +114,7 @@ public class LlistesGenerals implements Serializable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void carregarArrayListDirectorsGeneral() {
+	public static void carregarArrayListDirectorsGeneral() {
 		try {
 			FileInputStream fis = new FileInputStream("arrayListsGenerals/ArrayListGeneralDirectors.txt");
 			ObjectInputStream ois = new ObjectInputStream(fis);

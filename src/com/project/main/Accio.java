@@ -8,7 +8,7 @@ public class Accio {
 		
 		System.out.println();
 		System.out.println("-".repeat(43));
-		System.out.println("Quï¿½ desitja fer?");
+		System.out.println("Què desitja fer?");
 		System.out.println("-".repeat(43));
 		System.out.println("1.Veurer les llistes generals");
 		System.out.println("2.Veurer les teues llistes");

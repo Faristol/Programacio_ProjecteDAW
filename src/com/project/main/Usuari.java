@@ -19,9 +19,9 @@ public class Usuari extends Usuaris {
 	private String id = null;
 
 	// vinculem classe Usuari amb les diferents classes usant arrayList
-	private ArrayList<Pelis> pelisUsuari;
-	private ArrayList<Actors> actorsUsuari;
-	private ArrayList<Directors> directorsUsuari;
+	private ArrayList<Pelis> pelisUsuari= new ArrayList<>();;
+	private ArrayList<Actors> actorsUsuari= new ArrayList<>();;
+	private ArrayList<Directors> directorsUsuari= new ArrayList<>();;
 
 	public String getRol() {
 		return rol;
@@ -324,6 +324,31 @@ public class Usuari extends Usuaris {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//també creem els arxius que tindran els arraylists
+//		File arraylistPelis = new File(
+//				carpetaUsuari.getParent() + "/" + carpetaUsuari.getName() + "/GuardarArrayListPelisUsuari.txt");
+//		try {
+//			arraylistPelis.createNewFile();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		File arraylistActors = new File(
+//				carpetaUsuari.getParent() + "/" + carpetaUsuari.getName() + "/GuardarArrayListActorsUsuari.txt");
+//		try {
+//			arraylistActors.createNewFile();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		File arraylistDirectors = new File(
+//				carpetaUsuari.getParent() + "/" + carpetaUsuari.getName() + "/GuardarArrayListDirectorsUsuari.txt");
+//		try {
+//			arraylistDirectors.createNewFile();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 	}
 
