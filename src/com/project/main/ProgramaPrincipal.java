@@ -116,7 +116,7 @@ public class ProgramaPrincipal {
 	@SuppressWarnings("resource")
 	public int menuInici() {
 		System.out.println("-----------Benvingut a PeliMania-----------");
-		System.out.println("Quï¿½ desitja fer?");
+		System.out.println("Què desitja fer?");
 		System.out.println("-".repeat(43));
 		System.out.println("1.Registrar-se");
 		System.out.println("2.Iniciar sessiï¿½");
