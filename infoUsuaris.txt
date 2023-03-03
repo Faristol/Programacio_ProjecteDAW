@@ -1,3 +1,2 @@
 NOM;COGNOMS;CORREU;CONTRASSENYA;POBLACIO;ROL;DATANAIXEMENT;ID;
 admin;admin;admin@gmail.com;eljefe;admin;ROL_ADMIN;01/01/1900;0;
-Pascual;Porró;pascualcentral@gmail.com;pascual;pascual;ROL_USUARI;23/01/2000;1;
