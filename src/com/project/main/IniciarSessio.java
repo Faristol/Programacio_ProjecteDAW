@@ -11,7 +11,7 @@ public class IniciarSessio {
 	public void iniciarSessio() {
 		System.out.println();
 		System.out.println("-".repeat(43));
-		System.out.println("-".repeat(14) + "Iniciar sessiï¿½" + "-".repeat(15));
+		System.out.println("-".repeat(14) + "Iniciar sessió" + "-".repeat(15));
 		System.out.println("-".repeat(43));
 		String nom = introduirNomContrassenya();
 		String[] infoUser = infoUser(nom);
@@ -23,13 +23,14 @@ public class IniciarSessio {
 		ArrayList<Actors> actors = Usuari.carregarArrayListActorsUsuari(infoUser[3], infoUser[2]);
 		// i carregem els generals
 		LlistesGenerals llistesGenerals = new LlistesGenerals();
-		llistesGenerals.carregarArrayListPelisGeneral();
-		llistesGenerals.carregarArrayListActorsGeneral();
-		llistesGenerals.carregarArrayListDirectorsGeneral();
+		LlistesGenerals.carregarArrayListPelisGeneral();
+		LlistesGenerals.carregarArrayListActorsGeneral();
+		LlistesGenerals.carregarArrayListDirectorsGeneral();
 
 
 	}
-	public String contrassenyaNom(){
+
+	public String contrassenyaNom() {
 		return null;
 	}
 
@@ -92,7 +93,7 @@ public class IniciarSessio {
 	}
 
 	public void benvinguda(String nom, String cognom) {
-		System.out.println("ï¿½s un plaer veure't per acï¿½ " + nom + " " + cognom);
+		System.out.println("És un plaer veure't per ací " + nom + " " + cognom);
 
 	}
 

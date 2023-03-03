@@ -1,9 +1,3 @@
 NOM;COGNOMS;CORREU;CONTRASSENYA;POBLACIO;ROL;DATANAIXEMENT;ID;
 admin;admin;admin@gmail.com;eljefe;admin;ROL_ADMIN;01/01/1900;0;
-hola;hola;hola@gmail.com;holahola;holahola;ROL_USUARI;23/10/1988;1;
-HOLA;HOLA;HOLA@GMAIL.COM;HOLAHOLA;HOLAHOLA;ROL_USUARI;23/10/1920;2;
-pepe;pepe;pepe@gmail.com;pepepepe;pepepepe;ROL_USUARI;12/01/1923;3;
-paco;paco;paco@gmail.com;pacopaco;pacolandia;ROL_USUARI;12/03/1945;4;
-aigua;aigua bona;aiguabona@gmail.com;aiguaaigua;aiguaaigua;ROL_USUARI;12/02/2000;5;
-pepe garrofera;pa negre;elgarrofer@gmail.com;pepepepe;Xativa;ROL_USUARI;23/01/1985;6;
-TuPutaMadre;Josep;Josep@gmail.com;123456;Ja;ROL_USUARI;15/11/2004;7;
+Pascual;Porró;pascualcentral@gmail.com;pascual;pascual;ROL_USUARI;23/01/2000;1;
