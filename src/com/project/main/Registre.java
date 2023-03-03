@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -12,7 +13,7 @@ public class Registre {
 	public void registre(Scanner entrada, File f) {
 		System.out.println();
 		System.out.println("-".repeat(43));
-		System.out.println("-".repeat(17)+"Registre"+"-".repeat(18));
+		System.out.println("-".repeat(17) + "Registre" + "-".repeat(18));
 		System.out.println("-".repeat(43));
 
 		String nom = comprovacioNom(entrada, f);
@@ -30,10 +31,22 @@ public class Registre {
 		// ara creem l'objecte usuari i els seus fitxers aplicant el metode
 		Usuari user = new Usuari(nom, cognoms, correu, contrassenya, poblacio, dataNaixement, id);
 		user.creacioCarpetaFitxer();
+
+		// inmediatament portem a l'usuari a iniciar sessi�
+		// ara s'hauran de guardar els arrays, aix� es crearan els fitxers on
+		// s'aguardaran els arraylists
+		// tamb� posem els generals, aix� la primera vegada es carregaran
+		Usuari.guardarArrayListPelisUsuari(user.getPelisUsuari(), id, correu);
+		Usuari.guardarArrayListDirectorsUsuari(user.getDirectorsUsuari(), id, correu);
+		Usuari.guardarArrayListActorsUsuari(user.getActorsUsuari(), id, correu);
+		// i carregem els generals
+		LlistesGenerals llistesGenerals = new LlistesGenerals();
+		llistesGenerals.guardarArrayListPelisGeneral();
+		llistesGenerals.guardarArrayListActorsGeneral();
+		llistesGenerals.guardarArrayListDirectorsGeneral();
 		// inmediatament portem a l'usuari a iniciar sessi�
 		IniciarSessio is = new IniciarSessio();
 		is.iniciarSessio();
-		
 
 	}
 
@@ -250,15 +263,14 @@ public class Registre {
 				}
 			}
 			lectorFitxer.close();
-			
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		String id = String.valueOf(aux + 1);
 		return id;
-		
-		
+
 	}
 
 	public void guardarInformacioUsuari(String nom, String cognoms, String correu, String contrassenya, String poblacio,
