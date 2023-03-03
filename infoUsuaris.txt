@@ -1,2 +1,4 @@
 NOM;COGNOMS;CORREU;CONTRASSENYA;POBLACIO;ROL;DATANAIXEMENT;ID;
 admin;admin;admin@gmail.com;eljefe;admin;ROL_ADMIN;01/01/1900;0;
+pepe;pepe;pepe@gmail.com;pepepepe;vallada;ROL_USUARI;23/01/1989;1;
+paco;paco;paco@gmail.com;pacopaco;pacolandia;ROL_USUARI;12/01/2000;2;

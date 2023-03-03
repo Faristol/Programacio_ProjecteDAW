@@ -2,7 +2,7 @@ package com.project.main;
 
 import java.util.Scanner;
 
-public class MenuFer1 {
+public class MenuFer3 {
 	@SuppressWarnings("resource")
 	public static int menuFer() {
 
@@ -12,7 +12,9 @@ public class MenuFer1 {
 		System.out.println("-".repeat(43));
 		System.out.println("1.Afegir");
 		System.out.println("2.Veurer");
-		System.out.println("3.Fer enrere");
+		System.out.println("3.Modificar");
+		System.out.println("4.Eliminar");
+		System.out.println("5.Fer enrere");
 		System.out.println("-".repeat(43));
 		Scanner accio = new Scanner(System.in);
 
@@ -27,7 +29,12 @@ public class MenuFer1 {
 			if (j == 1 || j == 2) {
 				troba = true;
 			} else {
-				System.out.println("Has de polsar 1 per a afegir o 2 per a veurer o 3 per a fer enrere.");
+				System.out.println("Has de polsar 1 per a accedir afegir.");
+				System.out.println("Has de polsar 2 per a accedir veure.");
+				System.out.println("Has de polsar 3 per a accedir modificar.");
+				System.out.println("Has de polsar 4 per a eliminar.");
+				System.out.println("Has de polsar 5 per a retrocedir.");
+				
 			}
 		} while (!troba);
 		return j;

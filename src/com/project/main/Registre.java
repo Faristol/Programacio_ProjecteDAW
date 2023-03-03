@@ -38,9 +38,10 @@ public class Registre {
 		Usuari.guardarArrayListPelisUsuari(user.getPelisUsuari(), id, correu);
 		Usuari.guardarArrayListDirectorsUsuari(user.getDirectorsUsuari(), id, correu);
 		Usuari.guardarArrayListActorsUsuari(user.getActorsUsuari(), id, correu);
-		// inmediatament portem a l'usuari a iniciar sessi�
-		IniciarSessio is = new IniciarSessio();
-		is.iniciarSessio();
+		// inmediatament portem al menu
+		ProgramaPrincipal inici = new ProgramaPrincipal();
+		inici.menuIniciSessio();
+		
 
 	}
 
