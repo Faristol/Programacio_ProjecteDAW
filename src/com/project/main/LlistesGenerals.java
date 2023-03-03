@@ -15,8 +15,6 @@ public class LlistesGenerals implements Serializable {
 	public static ArrayList<Pelis> pelisGenerals = new ArrayList<>();
 	public static ArrayList<Actors> actorsGenerals = new ArrayList<>();
 	public static ArrayList<Directors> directorsGenerals = new ArrayList<>();
-	
-	
 
 	public static ArrayList<Pelis> getPelisGenerals() {
 		return pelisGenerals;
@@ -100,7 +98,7 @@ public class LlistesGenerals implements Serializable {
 		try {
 			FileInputStream fis = new FileInputStream("arrayListsGenerals/ArrayListGeneralActors.txt");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			LlistesGenerals.pelisGenerals = (ArrayList<Pelis>) ois.readObject();
+			LlistesGenerals.actorsGenerals = (ArrayList<Actors>) ois.readObject();
 			ois.close();
 			fis.close();
 		} catch (Exception e) {
@@ -114,7 +112,7 @@ public class LlistesGenerals implements Serializable {
 		try {
 			FileInputStream fis = new FileInputStream("arrayListsGenerals/ArrayListGeneralDirectors.txt");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			LlistesGenerals.pelisGenerals = (ArrayList<Pelis>) ois.readObject();
+			LlistesGenerals.directorsGenerals = (ArrayList<Directors>) ois.readObject();
 			ois.close();
 			fis.close();
 		} catch (Exception e) {

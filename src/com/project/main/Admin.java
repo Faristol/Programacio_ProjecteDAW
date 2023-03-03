@@ -9,9 +9,6 @@ public class Admin extends Usuaris {
 	private final String rol = "ROL_ADMIN";
 	private String dataNaixement = "01/01/01";
 
-	static {
-
-	}
 
 	public String getRol() {
 		return rol;
