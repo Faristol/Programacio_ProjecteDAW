@@ -11,11 +11,11 @@ public class IniciarSessio {
 	public void iniciarSessio() {
 		System.out.println();
 		System.out.println("-".repeat(43));
-		System.out.println("-".repeat(14) + "Iniciar sessió" + "-".repeat(15));
+		System.out.println("-".repeat(14) + "Iniciar sessiï¿½" + "-".repeat(15));
 		System.out.println("-".repeat(43));
 		String nom = introduirNomContrassenya();
 		String[] infoUser = infoUser(nom);
-		// en la info obtesa de l'usuari s'accedirà a la carpeta seua
+		// en la info obtesa de l'usuari s'accedirï¿½ a la carpeta seua
 		benvinguda(infoUser[0], infoUser[1]);
 		// aci s'hauran de carregar els ArrayList amb Serialitzable
 		ArrayList<Pelis> peli = Usuari.carregarArrayListPelisUsuari(infoUser[3], infoUser[2]);
@@ -26,6 +26,7 @@ public class IniciarSessio {
 		llistesGenerals.carregarArrayListPelisGeneral();
 		llistesGenerals.carregarArrayListActorsGeneral();
 		llistesGenerals.carregarArrayListDirectorsGeneral();
+
 
 	}
 	public String contrassenyaNom(){
@@ -91,7 +92,8 @@ public class IniciarSessio {
 	}
 
 	public void benvinguda(String nom, String cognom) {
-		System.out.println("És un plaer veure't per ací " + nom + " " + cognom);
+		System.out.println("ï¿½s un plaer veure't per acï¿½ " + nom + " " + cognom);
+
 	}
 
 }
