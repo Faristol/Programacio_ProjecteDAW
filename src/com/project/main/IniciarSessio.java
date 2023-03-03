@@ -93,6 +93,7 @@ public class IniciarSessio {
 
 	public void benvinguda(String nom, String cognom) {
 		System.out.println("�s un plaer veure't per ac� " + nom + " " + cognom);
+
 	}
 
 }
