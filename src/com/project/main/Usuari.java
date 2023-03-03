@@ -116,11 +116,12 @@ public class Usuari extends Usuaris {
 	// metode public void, en static ens estalviem ixe pas, sols s'haura de
 	// recuperar el id i el correuElectronic
 	// per a accedir a la seua carpeta
-	//directament per a clidarlos serà ex Usuari.guardarArrayListPelis(.......);
+	// directament per a clidarlos serà ex Usuari.guardarArrayListPelis(.......);
 	public static void guardarArrayListPelisUsuari(ArrayList<Pelis> pelis, String id, String correuElectronic) {
 		try {
 			FileOutputStream fileOut = new FileOutputStream(
-					"carpetesUsuaris/" + id + correuElectronic.substring(0, correuElectronic.indexOf("@"))+"/GuardarArrayListPelisUsuari.txt");
+					"carpetesUsuaris/" + id + correuElectronic.substring(0, correuElectronic.indexOf("@"))
+							+ "/GuardarArrayListPelisUsuari.txt");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(pelis); // guardem l'arraylist en bytes
 			out.close();
@@ -131,10 +132,12 @@ public class Usuari extends Usuaris {
 		}
 
 	}
+
 	public static void guardarArrayListActorsUsuari(ArrayList<Actors> actors, String id, String correuElectronic) {
 		try {
 			FileOutputStream fileOut = new FileOutputStream(
-					"carpetesUsuaris/" + id + correuElectronic.substring(0, correuElectronic.indexOf("@"))+"/GuardarArrayListActorsUsuari.txt");
+					"carpetesUsuaris/" + id + correuElectronic.substring(0, correuElectronic.indexOf("@"))
+							+ "/GuardarArrayListActorsUsuari.txt");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(actors); // guardem l'arraylist en bytes
 			out.close();
@@ -145,10 +148,13 @@ public class Usuari extends Usuaris {
 		}
 
 	}
-	public static void guardarArrayListDirectorsUsuari(ArrayList<Directors> directors, String id, String correuElectronic) {
+
+	public static void guardarArrayListDirectorsUsuari(ArrayList<Directors> directors, String id,
+			String correuElectronic) {
 		try {
 			FileOutputStream fileOut = new FileOutputStream(
-					"carpetesUsuaris/" + id + correuElectronic.substring(0, correuElectronic.indexOf("@"))+"/GuardarArrayListDirectorsUsuari.txt");
+					"carpetesUsuaris/" + id + correuElectronic.substring(0, correuElectronic.indexOf("@"))
+							+ "/GuardarArrayListDirectorsUsuari.txt");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(directors); // guardem l'arraylist en bytes
 			out.close();
@@ -159,58 +165,65 @@ public class Usuari extends Usuaris {
 		}
 
 	}
-	//creem els metodes per a carregar els arrays
-	public static ArrayList<Pelis> carregarArrayListPelisUsuari(String id, String correuElectronic){
+
+	// creem els metodes per a carregar els arrays
+	public static ArrayList<Pelis> carregarArrayListPelisUsuari(String id, String correuElectronic) {
 		try {
-			FileInputStream fileIn = new FileInputStream("carpetesUsuaris/" + id + correuElectronic.substring(0, correuElectronic.indexOf("@"))+"/GuardarArrayListPelisUsuari.txt");
-		    ObjectInputStream in = new ObjectInputStream(fileIn);
-		    @SuppressWarnings("unchecked")
+			FileInputStream fileIn = new FileInputStream(
+					"carpetesUsuaris/" + id + correuElectronic.substring(0, correuElectronic.indexOf("@"))
+							+ "/GuardarArrayListPelisUsuari.txt");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			@SuppressWarnings("unchecked")
 			ArrayList<Pelis> peli = (ArrayList<Pelis>) in.readObject();
-		//s'ha fet un casting tmb
-		//ara l'array peli es podrà gastar per a extraure informació o posar-ne
-		    in.close();
-		    fileIn.close();
-		    return peli;
-		}catch(Exception e) {
-		    System.err.println(e);
+			// s'ha fet un casting tmb
+			// ara l'array peli es podrà gastar per a extraure informació o posar-ne
+			in.close();
+			fileIn.close();
+			return peli;
+		} catch (Exception e) {
+			System.err.println(e);
 		}
 		return null;
-		
+
 	}
-	public static ArrayList<Actors> carregarArrayListActorsUsuari(String id, String correuElectronic){
+
+	public static ArrayList<Actors> carregarArrayListActorsUsuari(String id, String correuElectronic) {
 		try {
-			FileInputStream fileIn = new FileInputStream("carpetesUsuaris/" + id + correuElectronic.substring(0, correuElectronic.indexOf("@"))+"/GuardarArrayListActorsUsuari.txt");
-		    ObjectInputStream in = new ObjectInputStream(fileIn);
-		    @SuppressWarnings("unchecked")
+			FileInputStream fileIn = new FileInputStream(
+					"carpetesUsuaris/" + id + correuElectronic.substring(0, correuElectronic.indexOf("@"))
+							+ "/GuardarArrayListActorsUsuari.txt");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			@SuppressWarnings("unchecked")
 			ArrayList<Actors> actors = (ArrayList<Actors>) in.readObject();
-		    in.close();
-		    fileIn.close();
-		    return actors;
-		}catch(Exception e) {
-		    System.err.println(e);
+			in.close();
+			fileIn.close();
+			return actors;
+		} catch (Exception e) {
+			System.err.println(e);
 		}
 		return null;
-		
+
 	}
-	public static ArrayList<Pelis> carregarArrayListDirectorsUsuari(String id, String correuElectronic){
+
+	public static ArrayList<Directors> carregarArrayListDirectorsUsuari(String id, String correuElectronic) {
 		try {
-			FileInputStream fileIn = new FileInputStream("carpetesUsuaris/" + id + correuElectronic.substring(0, correuElectronic.indexOf("@"))+"/GuardarArrayListDirectorsUsuari.txt");
-		    ObjectInputStream in = new ObjectInputStream(fileIn);
-		    @SuppressWarnings("unchecked")
-			ArrayList<Pelis> directors = (ArrayList<Pelis>) in.readObject();
-		    in.close();
-		    fileIn.close();
-		    return directors;
-		}catch(Exception e) {
-		    System.err.println(e);
+			FileInputStream fileIn = new FileInputStream(
+					"carpetesUsuaris/" + id + correuElectronic.substring(0, correuElectronic.indexOf("@"))
+							+ "/GuardarArrayListDirectorsUsuari.txt");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			@SuppressWarnings("unchecked")
+			ArrayList<Directors> directors = (ArrayList<Directors>) in.readObject();
+			in.close();
+			fileIn.close();
+			return directors;
+		} catch (Exception e) {
+			System.err.println(e);
 		}
 		return null;
-		
+
 	}
-	//ja tinguem els metodes per a carregar i guardar els arrays lists particulars
-	//ara els generals en LlistesGenerals
-	
-	
+	// ja tinguem els metodes per a carregar i guardar els arrays lists particulars
+	// ara els generals en LlistesGenerals
 
 	@Override
 	public void crearPeli() {
