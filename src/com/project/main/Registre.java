@@ -31,19 +31,13 @@ public class Registre {
 		// ara creem l'objecte usuari i els seus fitxers aplicant el metode
 		Usuari user = new Usuari(nom, cognoms, correu, contrassenya, poblacio, dataNaixement, id);
 		user.creacioCarpetaFitxer();
-
 		// inmediatament portem a l'usuari a iniciar sessiï¿½
 		// ara s'hauran de guardar els arrays, aixï¿½ es crearan els fitxers on
 		// s'aguardaran els arraylists
-		// tambï¿½ posem els generals, aixï¿½ la primera vegada es carregaran
+		//  aixï¿½ la primera vegada es carregaran
 		Usuari.guardarArrayListPelisUsuari(user.getPelisUsuari(), id, correu);
 		Usuari.guardarArrayListDirectorsUsuari(user.getDirectorsUsuari(), id, correu);
 		Usuari.guardarArrayListActorsUsuari(user.getActorsUsuari(), id, correu);
-		// i carregem els generals
-		LlistesGenerals llistesGenerals = new LlistesGenerals();
-		llistesGenerals.guardarArrayListPelisGeneral();
-		llistesGenerals.guardarArrayListActorsGeneral();
-		llistesGenerals.guardarArrayListDirectorsGeneral();
 		// inmediatament portem a l'usuari a iniciar sessiï¿½
 		IniciarSessio is = new IniciarSessio();
 		is.iniciarSessio();
@@ -61,9 +55,9 @@ public class Registre {
 		do {
 			nom = entrada.nextLine().trim();
 			if (nom.contains(";")) {
-				System.out.println("No pots usar el sï¿½mbol \";");
+				System.out.println("No pots usar el símbol \";");
 			} else if (nom.length() < 1 || nom.length() > 30) {
-				System.out.println("La longitud del nom ha de tindre entre 1 i 20 carï¿½cters. Torna a provar.");
+				System.out.println("La longitud del nom ha de tindre entre 1 i 20 caràcters. Torna a provar.");
 			} else {
 				int comptadorOcurrencies = 0;
 

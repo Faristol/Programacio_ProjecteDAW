@@ -25,7 +25,7 @@ public class ProgramaPrincipal {
 
 		int accio = Accio.menuAccio();
 		int llista = AccioLlista.menuLlist1();
-		
+
 		if (accio == 1) {
 			int fer = MenuFer1.menuFer();
 			// switch per a seleccionar la llista
@@ -72,10 +72,10 @@ public class ProgramaPrincipal {
 					// modifiquem
 				} else if (fer == 3) {
 					// eliminem
-				} else if (fer==4){
+				} else if (fer == 4) {
 					// veurer
-				}else {
-					//enrere
+				} else {
+					// enrere
 				}
 				break;
 			case 2:
@@ -85,10 +85,10 @@ public class ProgramaPrincipal {
 					// modifiquem
 				} else if (fer == 3) {
 					// eliminem
-				} else if (fer==4){
+				} else if (fer == 4) {
 					// veurer
-				}else {
-					//enrere
+				} else {
+					// enrere
 				}
 				break;
 			case 3:
@@ -98,10 +98,10 @@ public class ProgramaPrincipal {
 					// modifiquem
 				} else if (fer == 3) {
 					// eliminem
-				} else if (fer==4){
+				} else if (fer == 4) {
 					// veurer
-				}else {
-					//enrere
+				} else {
+					// enrere
 				}
 				break;
 			case 4:
@@ -109,7 +109,7 @@ public class ProgramaPrincipal {
 			}
 
 		} else {
-			//tirar enrere
+			// tirar enrere
 		}
 	}
 
@@ -119,7 +119,7 @@ public class ProgramaPrincipal {
 		System.out.println("Què desitja fer?");
 		System.out.println("-".repeat(43));
 		System.out.println("1.Registrar-se");
-		System.out.println("2.Iniciar sessiï¿½");
+		System.out.println("2.Iniciar sessió");
 		System.out.println("3.Eixir del programa");
 		System.out.println("-".repeat(43));
 		Scanner entradaInici = new Scanner(System.in);
