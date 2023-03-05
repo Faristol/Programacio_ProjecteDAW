@@ -2,11 +2,13 @@ package com.project.main;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Usuari extends Usuaris {
 	private String nom = null;
@@ -111,12 +113,12 @@ public class Usuari extends Usuaris {
 		this.directorsUsuari = directorsUsuari;
 	}
 
-	// public static així, quan l'usuari inicie sessió no caldrà recuperar la
-	// informació i crear un objecte per a aplicar el
+	// public static aixï¿½, quan l'usuari inicie sessiï¿½ no caldrï¿½ recuperar la
+	// informaciï¿½ i crear un objecte per a aplicar el
 	// metode public void, en static ens estalviem ixe pas, sols s'haura de
 	// recuperar el id i el correuElectronic
 	// per a accedir a la seua carpeta
-	// directament per a clidarlos serà ex Usuari.guardarArrayListPelis(.......);
+	// directament per a clidarlos serï¿½ ex Usuari.guardarArrayListPelis(.......);
 	public static void guardarArrayListPelisUsuari(ArrayList<Pelis> pelis, String id, String correuElectronic) {
 		try {
 			FileOutputStream fileOut = new FileOutputStream(
@@ -176,7 +178,7 @@ public class Usuari extends Usuaris {
 			@SuppressWarnings("unchecked")
 			ArrayList<Pelis> peli = (ArrayList<Pelis>) in.readObject();
 			// s'ha fet un casting tmb
-			// ara l'array peli es podrà gastar per a extraure informació o posar-ne
+			// ara l'array peli es podrï¿½ gastar per a extraure informaciï¿½ o posar-ne
 			in.close();
 			fileIn.close();
 			return peli;
@@ -224,78 +226,98 @@ public class Usuari extends Usuaris {
 	}
 	// ja tinguem els metodes per a carregar i guardar els arrays lists particulars
 	// ara els generals en LlistesGenerals
-
-	@Override
-	public void crearPeli() {
-		// TODO Auto-generated method stub
-
+//
+//	@Override
+//	public void crearPeli() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void modificarPeli() {
+//		// TODO Auto-generated method stub
+//	}
+	public static void consultarPeli(String id, String nom) {
+	try {
+		Scanner scanner = new Scanner(new File("carpetesUsuaris/"+id+nom+"/llistaPelis.llista"));
+		System.out.println("Llista de les peliculÂ·les de l'usuari "+nom+".");
+		while (scanner.hasNextLine()) {
+			System.out.println(scanner.nextLine());
+		}
+		scanner.close();
+	} catch (FileNotFoundException e) {
+		System.out.println("Error al leer el archivo.");
 	}
-
-	@Override
-	public void modificarPeli() {
-		// TODO Auto-generated method stub
-
+}
+//
+//	@Override
+//	public void eliminarPeli() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void crearActor() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void modificarActor() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+	public static void consultarActor(String id, String nom){
+		try {
+			Scanner scanner = new Scanner(new File("carpetesUsuaris/"+id+nom+"/llistaActors.llista"));
+			System.out.println("Llista dels actors de l'usuari "+nom+".");
+			while (scanner.hasNextLine()) {
+				System.out.println(scanner.nextLine());
+			}
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error al leer el archivo.");
+		}
 	}
-
-	@Override
-	public void consultarPeli() {
-		// TODO Auto-generated method stub
-
+//
+//	@Override
+//	public void eliminarActor() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void crearDirector() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void modificarDirector() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+	public static void consultarDirector(String id, String nom) {
+		try {
+			Scanner scanner = new Scanner(new File("carpetesUsuaris/"+id+nom+"/llistaDirecotrs.llista"));
+			System.out.println("Llista dels directors de l'usuari "+nom+".");
+			while (scanner.hasNextLine()) {
+				System.out.println(scanner.nextLine());
+			}
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error al leer el archivo.");
+		}
 	}
-
-	@Override
-	public void eliminarPeli() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void crearActor() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void modificarActor() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void consultarActor() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void eliminarActor() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void crearDirector() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void modificarDirector() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void consultarDirector() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void eliminarDirector() {
-		// TODO Auto-generated method stub
-
-	}
+	
+//
+//	@Override
+//	public void eliminarDirector() {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 	public void creacioCarpetaFitxer() {
 		File carpetaUsuari = new File(
@@ -324,7 +346,7 @@ public class Usuari extends Usuaris {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//també creem els arxius que tindran els arraylists
+		//tambï¿½ creem els arxius que tindran els arraylists
 //		File arraylistPelis = new File(
 //				carpetaUsuari.getParent() + "/" + carpetaUsuari.getName() + "/GuardarArrayListPelisUsuari.txt");
 //		try {

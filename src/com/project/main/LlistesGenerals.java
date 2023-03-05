@@ -1,13 +1,18 @@
 package com.project.main;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-//crec q la implementació del Serializable en aquest cas no caldria, ja que les clases Pelis, Actors i Directors, ja l'incorporen
+//crec q la implementaciï¿½ del Serializable en aquest cas no caldria, ja que les clases Pelis, Actors i Directors, ja l'incorporen
 //i d'alguna manera s'hereta
 public class LlistesGenerals implements Serializable {
 
@@ -127,4 +132,55 @@ public class LlistesGenerals implements Serializable {
 
 	}
 
+	public static void consultarPeliGeneral() {
+			try {
+				Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralPelis.txt"));
+				System.out.println("Llista de les peliculÂ·les.");
+				while (scanner.hasNextLine()) {
+					int i=0;
+					System.out.println("i: "+scanner.nextLine());
+					i++;
+				}
+				scanner.close();
+			} catch (FileNotFoundException e) {
+				System.out.println("Error al leer el archivo.");
+			}
+		}
+	
+	public static void consultarActorGeneral(){
+		try {
+			Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralActors.txt"));
+			System.out.println("Llista dels actors.");
+			while (scanner.hasNextLine()) {
+				System.out.println(scanner.nextLine());
+			}
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error al leer el archivo.");
+		}
+	}
+	
+	public static void consultarDirectorGeneral() {
+		try {
+			Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralDirectors.txt"));
+			System.out.println("Llista dels directors.");
+			while (scanner.hasNextLine()) {
+				System.out.println(scanner.nextLine());
+			}
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error al leer el archivo.");
+		}
+	}
+	
+//	public void agregarElementoGeneral(String elemento) throws IOException {
+//		try {
+//			FileWriter fw = new FileWriter("arrayListsGenerals/ArrayListGeneral", true);
+//			fw.write(elemento + "\n");
+//			fw.close();
+//
+//		} catch (FileNotFoundException e) {
+//			System.out.println("Error al leer el archivo.");
+//		}
+//	}
 }

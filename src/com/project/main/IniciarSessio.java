@@ -11,7 +11,7 @@ public class IniciarSessio {
 	public void iniciarSessio() {
 		System.out.println();
 		System.out.println("-".repeat(43));
-		System.out.println("-".repeat(14) + "Iniciar sessió" + "-".repeat(15));
+		System.out.println("-".repeat(14) + "Iniciar sessiï¿½" + "-".repeat(15));
 		System.out.println("-".repeat(43));
 		String nom = introduirNomContrassenya();
 //		String nom = nom();
@@ -27,9 +27,6 @@ public class IniciarSessio {
 		LlistesGenerals.carregarArrayListPelisGeneral();
 		LlistesGenerals.carregarArrayListActorsGeneral();
 		LlistesGenerals.carregarArrayListDirectorsGeneral();
-		Accio menuLlistes = new Accio();
-		menuLlistes.menuAccio();
-//		menuAccio();
 
 	}
 
@@ -144,14 +141,14 @@ public class IniciarSessio {
 	public void benvinguda(String nom, String cognom) {
 		System.out.println();
 		System.out.println("-".repeat(43));
-		System.out.println("És un plaer veure't per ací " + nom + " " + cognom);
+		System.out.println("ï¿½s un plaer veure't per acï¿½ " + nom + " " + cognom);
 
 	}
 //	public void menuAccio(){
 //		 try (Scanner entrada = new Scanner(System.in)) {
 //			System.out.println();
 //			System.out.println("-".repeat(43));
-//			System.out.println("Què desitja fer?");
+//			System.out.println("Quï¿½ desitja fer?");
 //			System.out.println("-".repeat(43));
 //			System.out.println("1.Accedir a les llistes generals");
 //			System.out.println("2.Accedir a les teues llistes");
@@ -184,5 +181,6 @@ public class IniciarSessio {
 //				entrada.nextLine();
 //			} while (!troba);
 //		}
+
 
 }

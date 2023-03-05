@@ -1,28 +1,43 @@
 package com.project.main;
+public class Usuaris{
+     
+	public void crearPeli() {
+		
+	}
 
-public abstract class Usuaris {
-	public abstract void crearPeli();
+	public void modificarPeli() {
+	}
 
-	public abstract void modificarPeli();
+	public void consultarPeli() {	
+	}
 
-	public abstract void consultarPeli();
+	public void eliminarPeli() {
+	}	
 
-	public abstract void eliminarPeli();
+	public void crearActor() {
+	}
 
-	public abstract void crearActor();
+	public void modificarActor() {
+	}
 
-	public abstract void modificarActor();
+	public void consultarActor(){
+	}
+	
+	public void eliminarActor() {
+	}
 
-	public abstract void consultarActor();
+	public void crearDirector() {
+	}
 
-	public abstract void eliminarActor();
+	public void modificarDirector(){
+		
+	}
+		
+	public void consultarDirector() {
+	}
+	
+	public void eliminarDirector() {
+	}
 
-	public abstract void crearDirector();
-
-	public abstract void modificarDirector();
-
-	public abstract void consultarDirector();
-
-	public abstract void eliminarDirector();
 
 }
