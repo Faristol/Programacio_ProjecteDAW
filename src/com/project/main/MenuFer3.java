@@ -26,7 +26,7 @@ public class MenuFer3 {
 				accio.nextLine();
 			}
 			j = accio.nextInt();
-			if (j == 1 || j == 2) {
+			if (j == 1 || j == 2 || j == 3 || j == 4 || j == 5) {
 				troba = true;
 			} else {
 				System.out.println("Has de polsar 1 per a accedir afegir.");

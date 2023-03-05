@@ -65,77 +65,77 @@ public class Admin extends Usuaris {
 	public Admin() {
 		// TODO Auto-generated constructor stub
 	}
-
-	@Override
-	public void crearPeli() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void modificarPeli() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void consultarPeli() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void eliminarPeli() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void crearActor() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void modificarActor() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void consultarActor() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void eliminarActor() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void crearDirector() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void modificarDirector() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void consultarDirector() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void eliminarDirector() {
-		// TODO Auto-generated method stub
-
-	}
+//
+//	@Override
+//	public void crearPeli() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void modificarPeli() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void consultarPeli() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void eliminarPeli() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void crearActor() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void modificarActor() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void consultarActor() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void eliminarActor() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void crearDirector() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void modificarDirector() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void consultarDirector() {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void eliminarDirector() {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 }

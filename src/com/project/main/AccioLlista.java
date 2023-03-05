@@ -12,7 +12,7 @@ public class AccioLlista {
 		System.out.println("A quina llista vols accedir?");
 		System.out.println("-".repeat(43));
 		System.out.println("1.Llista actors");
-		System.out.println("2.Llista películ·les");
+		System.out.println("2.Llista pelï¿½culï¿½les");
 		System.out.println("3.llista directors");
 		System.out.println("4.Fer enrere");
 		System.out.println("-".repeat(43));
@@ -26,10 +26,13 @@ public class AccioLlista {
 				accio.nextLine();
 			}
 			j = accio.nextInt();
-			if (j == 1 || j == 2 || j==3) {
+			if (j == 1 || j == 2 || j==3 || j==4) {
 				troba = true;
 			} else {
-				System.out.println("Has de polsar 1 per a actors, 2 per a películ·les, 3 per a directors o 4 per a fer enrere.");
+				System.out.println("Has de polsar 1 per a accedir a la llista pelï¿½lï¿½cules.");
+				System.out.println("Has de polsar 2 per a accedir a la llista actors.");
+				System.out.println("Has de polsar 3 per a accedir a la llista directors.");
+				System.out.println("Has de polsar 4 per a retrocedir.");
 			}
 		} while (!troba);
 		return j;

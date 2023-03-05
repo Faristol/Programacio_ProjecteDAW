@@ -21,107 +21,138 @@ public class ProgramaPrincipal {
 		} else if (acces == 2) {
 			IniciarSessio is = new IniciarSessio();
 			is.iniciarSessio();
+			menu();
 		} else {
 			eixir();
+			System.out.println("Programa tancat.");
 		}
 	}
 
-//		int llista = AccioLlista.menuLlist1();
-//
-//		if (accio == 1) {
-//			int fer = MenuFer1.menuFer();
-//			// switch per a seleccionar la llista
-//			switch (llista) {
-//			case 1:
-//				if (fer == 1) {
-//					// afegim
-//				} else if (fer == 2) {
-//					// veurer
-//				} else {
-//					// enrere
-//				}
-//				break;
-//			case 2:
-//				if (fer == 1) {
-//					// afegim
-//				} else if (fer == 2) {
-//					// veurer
-//				} else {
-//					// enrere
-//				}
-//				break;
-//			case 3:
-//				if (fer == 1) {
-//					// afegim
-//				} else if (fer == 2) {
-//					// veurer
-//				} else {
-//					// enrere
-//				}
-//				break;
-//			case 4:
-//				break;
-//			}
-//
-//		} else if (accio == 2) {
-//			int fer = MenuFer2.menuFer();
-//			// switch per a seleccionar la llista
-//			switch (llista) {
-//			case 1:
-//				if (fer == 1) {
-//					// afegim
-//				} else if (fer == 2) {
-//					// modifiquem
-//				} else if (fer == 3) {
-//					// eliminem
-//				} else if (fer == 4) {
-//					// veurer
-//				} else {
-//					// enrere
-//				}
-//				break;
-//			case 2:
-//				if (fer == 1) {
-//					// afegim
-//				} else if (fer == 2) {
-//					// modifiquem
-//				} else if (fer == 3) {
-//					// eliminem
-//				} else if (fer == 4) {
-//					// veurer
-//				} else {
-//					// enrere
-//				}
-//				break;
-//			case 3:
-//				if (fer == 1) {
-//					// afegim
-//				} else if (fer == 2) {
-//					// modifiquem
-//				} else if (fer == 3) {
-//					// eliminem
-//				} else if (fer == 4) {
-//					// veurer
-//				} else {
-//					// enrere
-//				}
-//				break;
-//			case 4:
-//				break;
-//			}
-//
-//		} else {
-//			// tirar enrere
-//		}
-//	}
+	public void menu() {
+		int accio = Accio.menuAccio();
+		int llista = 0;
+		if (accio != 3) {
+			llista = AccioLlista.menuLlist1();
+		}
+		if (accio == 1) {
+			int fer = 0;
+			if (llista != 4) {
+				fer = MenuFer1.menuFer();
+			}
+			switch (llista) {
+			case 1:
+				if (fer == 1) {
+					// afegim
+				} else if (fer == 2) {
+					LlistesGenerals.consultarActorGeneral();
+					menu();
+				} else {
+					menu();
+				}
+				break;
+			case 2:
+				if (fer == 1) {
+					// afegim
+				} else if (fer == 2) {
+					LlistesGenerals.consultarPeliGeneral();
+					menu();
+				} else {
+					menu();
+				}
+				break;
+			case 3:
+				if (fer == 1) {
+					// afegim
+				} else if (fer == 2) {
+					LlistesGenerals.consultarDirectorGeneral();
+					menu();
+				} else {
+					menu();
+				}
+				break;
+			case 4:
+				menu();
+				break;
+			default:
+				System.out.println("OpciÃ³n no vÃ¡lida. Intente nuevamente.");
+				break;
+			}
+
+		} else if (accio == 2) {
+			int fer = 0;
+			if (llista != 4) {
+				fer = MenuFer3.menuFer();
+			}
+			switch (llista) {
+			case 1:
+				if (fer == 1) {
+					// afegim
+				} else if (fer == 2) {
+					Usuari.consultarActor(null, null);
+					menu();
+				} else if (fer == 3) {
+					// modificar
+				} else if (fer == 4) {
+					// eliminem
+
+				} else {
+					menu();
+				}
+				break;
+			case 2:
+				if (fer == 1) {
+					// afegim
+				} else if (fer == 2) {
+					Usuari.consultarPeli(null, null);
+					menu();
+				} else if (fer == 3) {
+					// modificar
+				} else if (fer == 4) {
+					// eliminem
+
+				} else {
+					menu();
+
+				}
+				break;
+			case 3:
+				if (fer == 1) {
+					// afegim
+				} else if (fer == 2) {
+					Usuari.consultarDirector(null, null);
+					menu();
+				} else if (fer == 3) {
+					// modificar
+				} else if (fer == 4) {
+					// eliminem
+
+				} else {
+					menu();
+
+				}
+				break;
+			case 4:
+				menu();
+				break;
+			default:
+				System.out.println("OpciÃ³n no vÃ¡lida. Intente nuevamente.");
+				break;
+			}
+
+		} else {
+			inici();
+		}
+
+	}
+
 	@SuppressWarnings("resource")
 	public void menuIniciSessio() {
 		System.out.println();
 		System.out.println("-".repeat(43));
-		System.out.println("Què desitja fer?");
+		System.out.println("QuÃ© desitja fer?");
 		System.out.println("-".repeat(43));
 		System.out.println("1.Registrar-se");
-		System.out.println("2.Iniciar sessió");
+		System.out.println("2.Iniciar sessiï¿½");
 		System.out.println("3.Eixir del programa");
 		System.out.println("-".repeat(43));
 		Scanner entradaInici = new Scanner(System.in);
@@ -156,10 +187,10 @@ public class ProgramaPrincipal {
 	@SuppressWarnings("resource")
 	public int menuInici() {
 		System.out.println("-----------Benvingut a PeliMania-----------");
-		System.out.println("Què desitja fer?");
+		System.out.println("Quï¿½ desitja fer?");
 		System.out.println("-".repeat(43));
 		System.out.println("1.Registrar-se");
-		System.out.println("2.Iniciar sessió");
+		System.out.println("2.Iniciar sessiï¿½");
 		System.out.println("3.Eixir del programa");
 		System.out.println("-".repeat(43));
 		Scanner entradaInici = new Scanner(System.in);

@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class Accio {
 	@SuppressWarnings("resource")
-	public void menuAccio() {
+	public static int menuAccio() {
 		Scanner entrada = new Scanner(System.in);
 		System.out.println();
 		System.out.println("-".repeat(43));
-		System.out.println("Què desitja fer?");
+		System.out.println("Quï¿½ desitja fer?");
 		System.out.println("-".repeat(43));
 		System.out.println("1.Accedir a les llistes generals");
 		System.out.println("2.Accedir a les teues llistes");
@@ -32,7 +32,7 @@ public class Accio {
 						"Has de polsar 1 per a veurer les llistes generals, 2 per a veurer les teues llistes o 3 per a fer enrere.");
 			}
 		} while (troba == 0);
-		System.out.println(j);
+		return j;
 
 	}
 }
