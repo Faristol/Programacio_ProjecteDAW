@@ -8,13 +8,12 @@ public class MenuFer2 {
 			
 			System.out.println();
 			System.out.println("-".repeat(43));
-			System.out.println("Que vols fer?");
+			System.out.println("A quina llista vols accedir?");
 			System.out.println("-".repeat(43));
-			System.out.println("1.Afegir");
-			System.out.println("2.Modificar");
-			System.out.println("3.Eliminar");
-			System.out.println("4.Veurer");
-			System.out.println("5.Fer enrere");
+			System.out.println("1.Pel·lícules");
+			System.out.println("2.Actors");
+			System.out.println("3.Directors");
+			System.out.println("4.Fer enrere");
 			System.out.println("-".repeat(43));
 			Scanner accio = new Scanner(System.in);
 
@@ -29,7 +28,10 @@ public class MenuFer2 {
 				if (j == 1 || j == 2 || j==3 || j==4) {
 					troba = true;
 				} else {
-					System.out.println("Has de polsar 1 per a afegir, 2 per a modificar, 3 per a eliminar, 4 per a veurer o 5 per a fer enrere.");
+					System.out.println("Has de polsar 1 per a accedir a la llista pel·lícules.");
+					System.out.println("Has de polsar 2 per a accedir a la llista actors.");
+					System.out.println("Has de polsar 3 per a accedir a la llista directors.");
+					System.out.println("Has de polsar 4 per a retrocedir.");
 				}
 			} while (!troba);
 			return j;
