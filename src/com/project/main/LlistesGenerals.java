@@ -132,13 +132,14 @@ public class LlistesGenerals implements Serializable {
 
 	}
 
-	public static void consultarPeliGeneral() {
+
+	public void consultarPeliGeneral() {
 			try {
 				Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralPelis.txt"));
-				System.out.println("Llista de les pelicul·les.");
+				System.out.println("Llista de les pelicul·les:");
 				while (scanner.hasNextLine()) {
 					int i=0;
-					System.out.println("i: "+scanner.nextLine());
+					System.out.println(i+": "+scanner.nextLine());
 					i++;
 				}
 				scanner.close();
@@ -147,10 +148,10 @@ public class LlistesGenerals implements Serializable {
 			}
 		}
 	
-	public static void consultarActorGeneral(){
+	public void consultarActorGeneral(){
 		try {
 			Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralActors.txt"));
-			System.out.println("Llista dels actors.");
+			System.out.println("Llista dels actors:");
 			while (scanner.hasNextLine()) {
 				System.out.println(scanner.nextLine());
 			}
@@ -160,10 +161,10 @@ public class LlistesGenerals implements Serializable {
 		}
 	}
 	
-	public static void consultarDirectorGeneral() {
+	public void consultarDirectorGeneral() {
 		try {
 			Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralDirectors.txt"));
-			System.out.println("Llista dels directors.");
+			System.out.println("Llista dels directors:");
 			while (scanner.hasNextLine()) {
 				System.out.println(scanner.nextLine());
 			}
@@ -173,14 +174,46 @@ public class LlistesGenerals implements Serializable {
 		}
 	}
 	
-//	public void agregarElementoGeneral(String elemento) throws IOException {
-//		try {
-//			FileWriter fw = new FileWriter("arrayListsGenerals/ArrayListGeneral", true);
-//			fw.write(elemento + "\n");
-//			fw.close();
-//
-//		} catch (FileNotFoundException e) {
-//			System.out.println("Error al leer el archivo.");
-//		}
-//	}
+	@SuppressWarnings("resource")
+	public void agregarElementoGeneralActor() throws IOException{
+		try {
+			System.out.println("Qué actor vols agregar:");
+			Scanner cadena = new Scanner(System.in);
+			String elemento=cadena.nextLine();
+			FileWriter fw = new FileWriter("arrayListsGenerals/ArrayListGeneralActors.txt", true);
+			fw.write(elemento + "\n");
+			fw.close();
+			guardarArrayListActorsGeneral();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error al leer el archivo. No se ha podido añadir.");
+		}
+	}
+	@SuppressWarnings("resource")
+	public void agregarElementoGeneralDirec() throws IOException{
+		try {
+			System.out.println("Qué director vols agregar:");
+			Scanner cadena = new Scanner(System.in);
+			String elemento=cadena.nextLine();
+			FileWriter fw = new FileWriter("arrayListsGenerals/ArrayListGeneralDirectors.txt", true);
+			fw.write(elemento + "\n");
+			fw.close();
+			guardarArrayListDirectorsGeneral();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error al leer el archivo. No se ha podido añadir.");
+		}
+	}
+	@SuppressWarnings("resource")
+	public void agregarElementoGeneralPeli() throws IOException{
+		try {			
+			System.out.println("Qué vols agregar:");
+			Scanner cadena = new Scanner(System.in);
+			String elemento=cadena.nextLine();
+			FileWriter fw = new FileWriter("arrayListsGenerals/ArrayListGeneralPelis.txt", true);
+			fw.write(elemento + "\n");
+			fw.close();
+			guardarArrayListPelisGeneral();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error al leer el archivo. No se ha podido añadir.");
+		}
+	}
 }
