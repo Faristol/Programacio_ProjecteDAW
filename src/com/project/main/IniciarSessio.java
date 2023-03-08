@@ -2,6 +2,7 @@ package com.project.main;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -27,7 +28,7 @@ public class IniciarSessio {
 		LlistesGenerals.carregarArrayListPelisGeneral();
 		LlistesGenerals.carregarArrayListActorsGeneral();
 		LlistesGenerals.carregarArrayListDirectorsGeneral();
-
+		menu(infoUser);
 	}
 
 //	public String nom () {
@@ -182,5 +183,149 @@ public class IniciarSessio {
 //			} while (!troba);
 //		}
 
+	public void menu(String infoUser[]) {
+		int accio = Accio.menuAccio();
+		int llista = 0;
+		if (accio != 3) {
+			llista = AccioLlista.menuLlist1();
+		}
+		if (accio == 1) {
+			int fer = 0;
+			if (llista != 4) {
+				fer = MenuFer1.menuFer();
+			}
+			switch (llista) {
+			case 1:
+				if (fer == 1) {
+					LlistesGenerals llistesGenerals = new LlistesGenerals();
+					try {
+						llistesGenerals.agregarElementoGeneralActor();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					menu(infoUser);
+				} else if (fer == 2) {
+					LlistesGenerals llistesGenerals = new LlistesGenerals();
+					llistesGenerals.consultarActorGeneral();
+					menu(infoUser);
+				} else {
+					menu(infoUser);
+				}
+				break;
+			case 2:
+				if (fer == 1) {
+					try {
+						LlistesGenerals llistesGenerals = new LlistesGenerals();
+						llistesGenerals.agregarElementoGeneralPeli();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					menu(infoUser);
+				} else if (fer == 2) {
+					LlistesGenerals llistesGenerals = new LlistesGenerals();
+					llistesGenerals.consultarPeliGeneral();
+					menu(infoUser);
+				} else {
+					menu(infoUser);
+				}
+				break;
+			case 3:
+				if (fer == 1) {
+					LlistesGenerals llistesGenerals = new LlistesGenerals();
+					try {
+						llistesGenerals.agregarElementoGeneralDirec();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					menu(infoUser);
 
+				} else if (fer == 2) {
+					LlistesGenerals llistesGenerals = new LlistesGenerals();
+					llistesGenerals.consultarDirectorGeneral();
+					menu(infoUser);
+				} else {
+					menu(infoUser);
+				}
+				break;
+			case 4:
+				menu(infoUser);
+				break;
+			default:
+				System.out.println("Opción no válida. Intente nuevamente.");
+				break;
+			}
+
+		} else if (accio == 2) {
+			int fer = 0;
+			if (llista != 4) {
+				fer = MenuFer3.menuFer();
+			}
+			switch (llista) {
+			case 1:
+				if (fer == 1) {
+					Usuari.afegirActor(infoUser[3], infoUser[0]);
+					menu(infoUser);
+				} else if (fer == 2) {
+					Usuari.consultarActor(infoUser[3], infoUser[0]);
+					menu(infoUser);
+				} else if (fer == 3) {
+					// modificar
+				} else if (fer == 4) {
+					// eliminem
+
+				} else {
+					menu(infoUser);
+				}
+				break;
+			case 2:
+				if (fer == 1) {
+					Usuari.afegirPeli(infoUser[3], infoUser[0]);
+					menu(infoUser);
+				} else if (fer == 2) {
+					Usuari.consultarPeli(infoUser[3], infoUser[0]);
+					menu(infoUser);
+				} else if (fer == 3) {
+					// modificar
+				} else if (fer == 4) {
+					// eliminem
+
+				} else {
+					menu(infoUser);
+
+				}
+				break;
+			case 3:
+				if (fer == 1) {
+					Usuari.afegirDirector(infoUser[3], infoUser[0]);
+					menu(infoUser);
+				} else if (fer == 2) {
+					Usuari.consultarDirector(infoUser[3], infoUser[0]);
+					menu(infoUser);
+				} else if (fer == 3) {
+					// modificar
+				} else if (fer == 4) {
+					// eliminem
+
+				} else {
+					menu(infoUser);
+
+				}
+				break;
+			case 4:
+				menu(infoUser);
+				break;
+			default:
+				System.out.println("Opción no válida. Intente nuevamente.");
+				break;
+			}
+
+		} else {
+			ProgramaPrincipal programaPrincipal = new ProgramaPrincipal();
+			programaPrincipal.inici();
+		}
+
+	}
 }

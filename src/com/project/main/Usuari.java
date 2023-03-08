@@ -4,11 +4,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Usuari extends Usuaris {
 	private String nom = null;
@@ -227,11 +229,38 @@ public class Usuari extends Usuaris {
 	// ja tinguem els metodes per a carregar i guardar els arrays lists particulars
 	// ara els generals en LlistesGenerals
 //
-//	@Override
-//	public void crearPeli() {
-//		// TODO Auto-generated method stub
-//
-//	}
+	public static void afegirPeli(String id, String nom) {
+		try {
+			System.out.println("Aquestes son les pelicul·les que hi han, quina vols afegir a la teua llista?");
+			Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralPelis.txt"));
+			while (scanner.hasNextLine()) {
+				int i=0;
+				System.out.println(i+": "+scanner.nextLine());
+				i++;
+			}
+			scanner.close();
+			
+			Scanner entrada = new Scanner(System.in);
+			int valorafegir = 0;
+			boolean troba = false;
+			do {
+				System.out.println("Introdueix un nombre enter.");
+				valorafegir = entrada.nextInt();
+				if (!entrada.hasNextInt()) {
+					System.out.println("Has d'introduïr un nombre enter.");
+				} else if (valorafegir< 0 || valorafegir > pelisUsuari.size()) {
+					System.out.println("El nombre no correspon a cap pelicul·la.");
+				} else {
+					troba = true;
+				}
+			} while(!troba);
+			FileWriter fw = new FileWriter("carpetesUsuari/"+id+nom+"/llistaPelis.llista", true);
+			fw.write(pelisUsuari.get(valorafegir) + "\n");
+			fw.close();
+		}catch (FileNotFoundException e) {
+			System.out.println("Error al leer el archivo.");
+		}
+	}
 //
 //	@Override
 //	public void modificarPeli() {
@@ -240,7 +269,7 @@ public class Usuari extends Usuaris {
 	public static void consultarPeli(String id, String nom) {
 	try {
 		Scanner scanner = new Scanner(new File("carpetesUsuaris/"+id+nom+"/llistaPelis.llista"));
-		System.out.println("Llista de les pelicul·les de l'usuari "+nom+".");
+		System.out.println("Llista de les pelicul·les de l'usuari "+nom+":");
 		while (scanner.hasNextLine()) {
 			System.out.println(scanner.nextLine());
 		}
@@ -256,11 +285,40 @@ public class Usuari extends Usuaris {
 //
 //	}
 //
-//	@Override
-//	public void crearActor() {
-//		// TODO Auto-generated method stub
-//
-//	}
+	public static void afegirActor(String id, String nom){
+		try {
+			System.out.println("Aquests son els actors que hi han, quin vols afegir a la teua llista?");
+			Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralActors.txt"));
+			while (scanner.hasNextLine()) {
+				System.out.println(scanner.nextLine());
+			}
+			scanner.close();
+			
+			Scanner entrada = new Scanner(System.in);
+			int valorafegir = 0;
+			boolean troba = false;
+			
+			do {
+				System.out.println("Introdueix un nombre enter.");
+				valorafegir = entrada.nextInt();
+				if (!entrada.hasNextInt()) {
+					System.out.println("Has d'introduïr un nombre enter.");
+				} else if (valorafegir< 0 || valorafegir > actorsUsuari.size()) {
+					System.out.println("El nombre no correspon a cap actor.");
+				} else {
+					troba = true;
+				}
+			} while(!troba);
+			
+			FileWriter fw = new FileWriter("carpetesUsuari/"+id+nom+"/llistaActors.llista", true);
+			fw.write(actorsUsuari.get(valorafegir) + "\n");
+			fw.close();
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("Error al leer el archivo.");
+		}
+		
+	}
 //
 //	@Override
 //	public void modificarActor() {
@@ -271,7 +329,7 @@ public class Usuari extends Usuaris {
 	public static void consultarActor(String id, String nom){
 		try {
 			Scanner scanner = new Scanner(new File("carpetesUsuaris/"+id+nom+"/llistaActors.llista"));
-			System.out.println("Llista dels actors de l'usuari "+nom+".");
+			System.out.println("Llista dels actors de l'usuari "+nom+":");
 			while (scanner.hasNextLine()) {
 				System.out.println(scanner.nextLine());
 			}
@@ -287,11 +345,38 @@ public class Usuari extends Usuaris {
 //
 //	}
 //
-//	@Override
-//	public void crearDirector() {
-//		// TODO Auto-generated method stub
-//
-//	}
+	public static void afegirDirector(String id, String nom) {
+		try {
+			System.out.println("Aquests son els directors que hi han, quin vols afegir a la teua llista?");
+			Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralDirectors.txt"));
+			while (scanner.hasNextLine()) {
+				System.out.println(scanner.nextLine());
+			}
+			scanner.close();
+			
+			Scanner entrada = new Scanner(System.in);
+			int valorafegir = 0;
+			boolean troba = false;
+			
+			do {
+				System.out.println("Introdueix un nombre enter.");
+				valorafegir = entrada.nextInt();
+				if (!entrada.hasNextInt()) {
+					System.out.println("Has d'introduïr un nombre enter.");
+				} else if (valorafegir< 0 || valorafegir > directorsUsuari.size()) {
+					System.out.println("El nombre no correspon a cap director.");
+				} else {
+					troba = true;
+				}
+			} while(!troba);
+			FileWriter fw = new FileWriter("carpetesUsuari/"+id+nom+"/llistaDirectors.llista", true);
+			fw.write(directorsUsuari.get(valorafegir) + "\n");
+			fw.close();
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("Error al leer el archivo.");
+		}
+	}
 //
 //	@Override
 //	public void modificarDirector() {
@@ -301,8 +386,8 @@ public class Usuari extends Usuaris {
 //
 	public static void consultarDirector(String id, String nom) {
 		try {
-			Scanner scanner = new Scanner(new File("carpetesUsuaris/"+id+nom+"/llistaDirecotrs.llista"));
-			System.out.println("Llista dels directors de l'usuari "+nom+".");
+			Scanner scanner = new Scanner(new File("carpetesUsuaris/"+id+nom+"/llistaDirectors.llista"));
+			System.out.println("Llista dels directors de l'usuari "+nom+":");
 			while (scanner.hasNextLine()) {
 				System.out.println(scanner.nextLine());
 			}

@@ -8,7 +8,7 @@ public class MenuFer3 {
 
 		System.out.println();
 		System.out.println("-".repeat(43));
-		System.out.println("Que vols fer?");
+		System.out.println("Qué vols fer?");
 		System.out.println("-".repeat(43));
 		System.out.println("1.Afegir");
 		System.out.println("2.Veurer");

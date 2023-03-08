@@ -8,7 +8,7 @@ public class Accio {
 		Scanner entrada = new Scanner(System.in);
 		System.out.println();
 		System.out.println("-".repeat(43));
-		System.out.println("Qu� desitja fer?");
+		System.out.println("Qué desitja fer?");
 		System.out.println("-".repeat(43));
 		System.out.println("1.Accedir a les llistes generals");
 		System.out.println("2.Accedir a les teues llistes");

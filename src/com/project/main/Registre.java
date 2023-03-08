@@ -56,9 +56,9 @@ public class Registre {
 		do {
 			nom = entrada.nextLine().trim();
 			if (nom.contains(";")) {
-				System.out.println("No pots usar el s�mbol \";");
+				System.out.println("No pots usar el símbol \";");
 			} else if (nom.length() < 1 || nom.length() > 30) {
-				System.out.println("La longitud del nom ha de tindre entre 1 i 20 car�cters. Torna a provar.");
+				System.out.println("La longitud del nom ha de tindre entre 1 i 20 carácters. Torna a provar.");
 			} else {
 				int comptadorOcurrencies = 0;
 
@@ -74,7 +74,7 @@ public class Registre {
 						troba = true;
 						lectorFitxer.close();
 					} else {
-						System.out.println("El nom introdu�t no est� disponible. Torna a provar.");
+						System.out.println("El nom introduït no està disponible. Torna a provar.");
 					}
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -96,9 +96,9 @@ public class Registre {
 		do {
 			cognom = entrada.nextLine().trim();
 			if (cognom.contains(";")) {
-				System.out.println("No pots usar el s�mbol \";");
+				System.out.println("No pots usar el símbol \";");
 			} else if (cognom.length() < 1 || cognom.length() > 40) {
-				System.out.println("La longitud del cognom ha de tindre entre 1 i 40 car�cters.");
+				System.out.println("La longitud del cognom ha de tindre entre 1 i 40 carácters.");
 			} else {
 				int comptadorOcurrencies = 0;
 
@@ -114,7 +114,7 @@ public class Registre {
 						troba = true;
 						lectorFitxer.close();
 					} else {
-						System.out.println("El cognom introdu�t no est� disponible. Torna a provar.");
+						System.out.println("El cognom introduït no està disponible. Torna a provar.");
 						comptadorOcurrencies = 0;
 					}
 				} catch (FileNotFoundException e) {
@@ -138,9 +138,9 @@ public class Registre {
 			correu = entrada.nextLine().trim();
 			boolean coincideix = Pattern.compile("[\\w-\\.]+@[\\w-]+\\.[\\w]{2,4}").matcher(correu).matches();
 			if (coincideix == false) {
-				System.out.println("El correu introdu�t no presenta un format v�lid.");
+				System.out.println("El correu introduït no presenta un format valid.");
 			} else if (correu.length() > 60) {
-				System.out.println("La longitud del correu no pot superar els 60 car�cters.");
+				System.out.println("La longitud del correu no pot superar els 60 carácters.");
 			} else {
 				int comptadorOcurrencies = 0;
 
@@ -156,7 +156,7 @@ public class Registre {
 						lectorFitxer.close();
 						troba = true;
 					} else {
-						System.out.println("El correu introdu�t no est� disponible. Torna a provar.");
+						System.out.println("El correu introduït no està disponible. Torna a provar.");
 					}
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -177,7 +177,7 @@ public class Registre {
 			contrassenya = entrada.nextLine().trim();
 			boolean valida = Pattern.compile("(?!.*;)[\\w!@#$%^&*()-+=]{6,20}").matcher(contrassenya).matches();
 			if (valida == false) {
-				System.out.println("La contrassenya ha de tindre entre 6 i 20 car�cters. No pots usar el s�mbol \";");
+				System.out.println("La contrassenya ha de tindre entre 6 i 20 carácters. No pots usar el símbol \";");
 			} else {
 				System.out.println("Torna a introduir la contrassenya:");
 				String contrassenyaVerificacio = entrada.nextLine().trim();
@@ -197,13 +197,13 @@ public class Registre {
 		boolean troba = false;
 		String poblacio = null;
 		do {
-			System.out.println("Introdueix la poblaci�");
+			System.out.println("Introdueix la població");
 			poblacio = entrada.nextLine().trim();
-			boolean valida = Pattern.compile("(?iu)[a-z�-�\\s]+").matcher(poblacio).matches();
+			boolean valida = Pattern.compile("(?iu)[a-zñÑ\\s]+").matcher(poblacio).matches();
 			if (valida == false) {
-				System.out.println("Poblaci� no v�lida");
+				System.out.println("Població no válida");
 			} else if (poblacio.length() < 0 || poblacio.length() > 30) {
-				System.out.println("La longitud de la poblacio no pot superar els 30 car�cters.");
+				System.out.println("La longitud de la poblacio no pot superar els 30 carácters.");
 			} else {
 				troba = true;
 			}
@@ -220,7 +220,7 @@ public class Registre {
 			boolean valida = Pattern.compile("([0-2][1-9]|[1-9]0|3[0-1])/(0[1-9]|1[0-2])/((19|20)\\d{2})")
 					.matcher(dataNaixement).matches();
 			if (valida == false) {
-				System.out.println("Data de naixement en format inv�lid. El format ha de ser dd/mm/aaaa");
+				System.out.println("Data de naixement en format inválid. El format ha de ser dd/mm/aaaa");
 			} else {
 				troba = true;
 			}
