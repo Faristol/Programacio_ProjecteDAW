@@ -10,7 +10,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class Usuari extends Usuaris {
 	private String nom = null;
@@ -23,9 +22,9 @@ public class Usuari extends Usuaris {
 	private String id = null;
 
 	// vinculem classe Usuari amb les diferents classes usant arrayList
-	private ArrayList<Pelis> pelisUsuari= new ArrayList<>();;
-	private ArrayList<Actors> actorsUsuari= new ArrayList<>();;
-	private ArrayList<Directors> directorsUsuari= new ArrayList<>();;
+	private static ArrayList<Pelis> pelisUsuari= new ArrayList<>();;
+	private static ArrayList<Actors> actorsUsuari= new ArrayList<>();;
+	private static ArrayList<Directors> directorsUsuari= new ArrayList<>();;
 
 	public String getRol() {
 		return rol;
@@ -229,17 +228,13 @@ public class Usuari extends Usuaris {
 	// ja tinguem els metodes per a carregar i guardar els arrays lists particulars
 	// ara els generals en LlistesGenerals
 //
-	public static void afegirPeli(String id, String nom) {
+	@SuppressWarnings("resource")
+	public static void afegirPeli(String id, String nom) throws IOException {
 		try {
 			System.out.println("Aquestes son les pelicul·les que hi han, quina vols afegir a la teua llista?");
-			Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralPelis.txt"));
-			while (scanner.hasNextLine()) {
-				int i=0;
-				System.out.println(i+": "+scanner.nextLine());
-				i++;
-			}
-			scanner.close();
-			
+			LlistesGenerals llistesGenerals = new LlistesGenerals();
+			llistesGenerals.consultarPeliGeneral();
+		
 			Scanner entrada = new Scanner(System.in);
 			int valorafegir = 0;
 			boolean troba = false;
@@ -285,15 +280,12 @@ public class Usuari extends Usuaris {
 //
 //	}
 //
-	public static void afegirActor(String id, String nom){
+	@SuppressWarnings("resource")
+	public static void afegirActor(String id, String nom) throws IOException{
 		try {
 			System.out.println("Aquests son els actors que hi han, quin vols afegir a la teua llista?");
-			Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralActors.txt"));
-			while (scanner.hasNextLine()) {
-				System.out.println(scanner.nextLine());
-			}
-			scanner.close();
-			
+			LlistesGenerals llistesGenerals = new LlistesGenerals();
+			llistesGenerals.consultarActorGeneral();
 			Scanner entrada = new Scanner(System.in);
 			int valorafegir = 0;
 			boolean troba = false;
@@ -345,15 +337,12 @@ public class Usuari extends Usuaris {
 //
 //	}
 //
-	public static void afegirDirector(String id, String nom) {
+	@SuppressWarnings("resource")
+	public static void afegirDirector(String id, String nom) throws IOException {
 		try {
-			System.out.println("Aquests son els directors que hi han, quin vols afegir a la teua llista?");
-			Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralDirectors.txt"));
-			while (scanner.hasNextLine()) {
-				System.out.println(scanner.nextLine());
-			}
-			scanner.close();
 			
+			LlistesGenerals llistesGenerals = new LlistesGenerals();
+			llistesGenerals.consultarDirectorGeneral();
 			Scanner entrada = new Scanner(System.in);
 			int valorafegir = 0;
 			boolean troba = false;

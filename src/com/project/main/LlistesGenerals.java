@@ -92,7 +92,7 @@ public class LlistesGenerals implements Serializable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void carregarArrayListPelisGeneral() {
+	public void carregarArrayListPelisGeneral() {
 		try {
 			FileInputStream fis = new FileInputStream("arrayListsGenerals/ArrayListGeneralPelis.txt");
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -106,7 +106,7 @@ public class LlistesGenerals implements Serializable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void carregarArrayListActorsGeneral() {
+	public void carregarArrayListActorsGeneral() {
 		try {
 			FileInputStream fis = new FileInputStream("arrayListsGenerals/ArrayListGeneralActors.txt");
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -120,7 +120,7 @@ public class LlistesGenerals implements Serializable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void carregarArrayListDirectorsGeneral() {
+	public void carregarArrayListDirectorsGeneral() {
 		try {
 			FileInputStream fis = new FileInputStream("arrayListsGenerals/ArrayListGeneralDirectors.txt");
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -135,66 +135,28 @@ public class LlistesGenerals implements Serializable {
 
 
 	public void consultarPeliGeneral() {
-		 ArrayList<String> lista = new ArrayList<>();
-			try {
-				Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralPelis.txt"));
-				System.out.println("Llista de les pelicul·les:");
-				while (scanner.hasNextLine()) {
-					String linea = scanner.nextLine();
-	                String[] elementos = linea.split(":");
-	                for (String elemento : elementos) {
-	                    lista.add(elemento.trim());
-	                }
-				}
-				scanner.close();
-			} catch (FileNotFoundException e) {
-				System.out.println("Error al leer el archivo.");
-			}for (String elemento : lista) {
-	            System.out.println(elemento);
+		carregarArrayListPelisGeneral();
+			System.out.println("Llista de les pelicul·les:");
+
+			for (Pelis peli : LlistesGenerals.pelisGenerals) {
+	            System.out.println(peli.getTitolPeli()+" "+peli.getGenerePeli()+" "+peli.getDataPublicacio());
 	        }
 		}
 	
 	public void consultarActorGeneral(){
-		 ArrayList<String> lista = new ArrayList<>();
-		try {
-			Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralActors.txt"));
-			System.out.println("Llista dels actors:");
-			while (scanner.hasNextLine()) {
-				System.out.println(scanner.nextLine());
-				String linea = scanner.nextLine();
-                String[] elementos = linea.split(",");
-                for (String elemento : elementos) {
-                    lista.add(elemento.trim());
-                }
-			}
-			scanner.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("Error al leer el archivo.");
-		}for (String elemento : lista) {
-            System.out.println(elemento);
+		carregarArrayListActorsGeneral();
+		System.out.println("Llista dels actors:");
+
+		for (Actors actor : LlistesGenerals.actorsGenerals) {
+            System.out.println(actor.getNomActor()+" "+actor.getCognomsActor()+" "+actor.getDataNaixementActor());
         }
 	}
 	
-	public void consultarDirectorGeneral() {
-		 ArrayList<String> lista = new ArrayList<>();
-
-		try {
-			Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralDirectors.txt"));
-			System.out.println("Llista dels directors:");
-			while (scanner.hasNextLine()) {
-
-				String linea = scanner.nextLine();
-                String[] elementos = linea.split(",");
-                for (String elemento : elementos) {
-                    lista.add(elemento.trim());
-                }
-			}
-			scanner.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("Error al leer el archivo.");
-		}
-		 for (String elemento : lista) {
-	            System.out.println(elemento);
+	public void consultarDirectorGeneral() { 
+		carregarArrayListDirectorsGeneral();
+		System.out.println("Llista dels directors:");
+		 for (Directors director : LlistesGenerals.directorsGenerals) {
+	            System.out.println(director.getNomDirector()+" "+director.getCognomsDirector()+" "+director.getDataNaixementDirector());
 	        }
 	}
 	
