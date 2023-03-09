@@ -25,9 +25,9 @@ public class IniciarSessio {
 		ArrayList<Actors> actors = Usuari.carregarArrayListActorsUsuari(infoUser[3], infoUser[2]);
 		// i carregem els generals
 		LlistesGenerals llistesGenerals = new LlistesGenerals();
-		LlistesGenerals.carregarArrayListPelisGeneral();
-		LlistesGenerals.carregarArrayListActorsGeneral();
-		LlistesGenerals.carregarArrayListDirectorsGeneral();
+		llistesGenerals.carregarArrayListPelisGeneral();
+		llistesGenerals.carregarArrayListActorsGeneral();
+		llistesGenerals.carregarArrayListDirectorsGeneral();
 		menu(infoUser);
 	}
 
@@ -197,8 +197,8 @@ public class IniciarSessio {
 			switch (llista) {
 			case 1:
 				if (fer == 1) {
-					LlistesGenerals llistesGenerals = new LlistesGenerals();
 					try {
+						LlistesGenerals llistesGenerals = new LlistesGenerals();
 						llistesGenerals.agregarElementoGeneralActor();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
@@ -225,6 +225,7 @@ public class IniciarSessio {
 					menu(infoUser);
 				} else if (fer == 2) {
 					LlistesGenerals llistesGenerals = new LlistesGenerals();
+					
 					llistesGenerals.consultarPeliGeneral();
 					menu(infoUser);
 				} else {
@@ -233,8 +234,9 @@ public class IniciarSessio {
 				break;
 			case 3:
 				if (fer == 1) {
-					LlistesGenerals llistesGenerals = new LlistesGenerals();
+					
 					try {
+						LlistesGenerals llistesGenerals = new LlistesGenerals();
 						llistesGenerals.agregarElementoGeneralDirec();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block

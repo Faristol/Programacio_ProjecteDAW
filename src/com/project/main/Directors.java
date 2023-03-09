@@ -41,4 +41,9 @@ public class Directors implements Serializable {
 		this.dataNaixementDirector = dataNaixementDirector;
 	}
 
+	public static char[] getNom() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
