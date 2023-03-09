@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 //crec q la implementaci� del Serializable en aquest cas no caldria, ja que les clases Pelis, Actors i Directors, ja l'incorporen
 //i d'alguna manera s'hereta
 public class LlistesGenerals implements Serializable {
@@ -134,86 +135,114 @@ public class LlistesGenerals implements Serializable {
 
 
 	public void consultarPeliGeneral() {
+		 ArrayList<String> lista = new ArrayList<>();
 			try {
 				Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralPelis.txt"));
 				System.out.println("Llista de les pelicul·les:");
 				while (scanner.hasNextLine()) {
-					int i=0;
-					System.out.println(i+": "+scanner.nextLine());
-					i++;
+					String linea = scanner.nextLine();
+	                String[] elementos = linea.split(":");
+	                for (String elemento : elementos) {
+	                    lista.add(elemento.trim());
+	                }
 				}
 				scanner.close();
 			} catch (FileNotFoundException e) {
 				System.out.println("Error al leer el archivo.");
-			}
+			}for (String elemento : lista) {
+	            System.out.println(elemento);
+	        }
 		}
 	
 	public void consultarActorGeneral(){
+		 ArrayList<String> lista = new ArrayList<>();
 		try {
 			Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralActors.txt"));
 			System.out.println("Llista dels actors:");
 			while (scanner.hasNextLine()) {
 				System.out.println(scanner.nextLine());
+				String linea = scanner.nextLine();
+                String[] elementos = linea.split(",");
+                for (String elemento : elementos) {
+                    lista.add(elemento.trim());
+                }
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("Error al leer el archivo.");
-		}
+		}for (String elemento : lista) {
+            System.out.println(elemento);
+        }
 	}
 	
 	public void consultarDirectorGeneral() {
+		 ArrayList<String> lista = new ArrayList<>();
+
 		try {
 			Scanner scanner = new Scanner(new File("arrayListsGenerals/ArrayListGeneralDirectors.txt"));
 			System.out.println("Llista dels directors:");
 			while (scanner.hasNextLine()) {
-				System.out.println(scanner.nextLine());
+
+				String linea = scanner.nextLine();
+                String[] elementos = linea.split(",");
+                for (String elemento : elementos) {
+                    lista.add(elemento.trim());
+                }
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("Error al leer el archivo.");
 		}
+		 for (String elemento : lista) {
+	            System.out.println(elemento);
+	        }
 	}
 	
 	@SuppressWarnings("resource")
 	public void agregarElementoGeneralActor() throws IOException{
-		try {
-			System.out.println("Qué actor vols agregar:");
+		
+			System.out.println("Quin es el nom del actor que vols agregar:");
 			Scanner cadena = new Scanner(System.in);
-			String elemento=cadena.nextLine();
-			FileWriter fw = new FileWriter("arrayListsGenerals/ArrayListGeneralActors.txt", true);
-			fw.write(elemento + "\n");
-			fw.close();
+			String act=cadena.nextLine();
+			System.out.println("Quin es el seu cognom:");
+			String cog=cadena.nextLine();
+			System.out.println("Quina es la seua data de naixement");
+			String dat=cadena.nextLine();
+			Actors actor = new Actors(act, cog, dat);
+			actorsGenerals.add(actor);
 			guardarArrayListActorsGeneral();
-		} catch (FileNotFoundException e) {
-			System.out.println("Error al leer el archivo. No se ha podido añadir.");
-		}
+		
 	}
 	@SuppressWarnings("resource")
 	public void agregarElementoGeneralDirec() throws IOException{
-		try {
-			System.out.println("Qué director vols agregar:");
-			Scanner cadena = new Scanner(System.in);
-			String elemento=cadena.nextLine();
-			FileWriter fw = new FileWriter("arrayListsGenerals/ArrayListGeneralDirectors.txt", true);
-			fw.write(elemento + "\n");
-			fw.close();
+		
+		System.out.println("Quin es el nom del director que vols agregar:");
+		Scanner cadena = new Scanner(System.in);
+		String dir=cadena.nextLine();
+		System.out.println("Quin es el seu cognom:");
+		String cog=cadena.nextLine();
+		System.out.println("Quina es la seua data de naixement");
+		String dat=cadena.nextLine();
+			
+			Directors directors = new Directors(dir, cog, dat);
+			directorsGenerals.add(directors);
 			guardarArrayListDirectorsGeneral();
-		} catch (FileNotFoundException e) {
-			System.out.println("Error al leer el archivo. No se ha podido añadir.");
-		}
+	
 	}
+	
 	@SuppressWarnings("resource")
 	public void agregarElementoGeneralPeli() throws IOException{
-		try {			
-			System.out.println("Qué vols agregar:");
+				
+			System.out.println("Qué peli vols agregar:");
 			Scanner cadena = new Scanner(System.in);
-			String elemento=cadena.nextLine();
-			FileWriter fw = new FileWriter("arrayListsGenerals/ArrayListGeneralPelis.txt", true);
-			fw.write(elemento + "\n");
-			fw.close();
+			String pel=cadena.nextLine();
+			System.out.println("Qué genere es?");
+			String gen=cadena.nextLine();
+			System.out.println("Quina es la seua data de publicacio");
+			String dat=cadena.nextLine();
+			Pelis pelicula = new Pelis(pel, gen, dat);
+			pelisGenerals.add(pelicula);
 			guardarArrayListPelisGeneral();
-		} catch (FileNotFoundException e) {
-			System.out.println("Error al leer el archivo. No se ha podido añadir.");
-		}
+		
 	}
 }
