@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class IniciarSessio {
 
 	@SuppressWarnings("unused")
-	public void iniciarSessio() {
+	public void iniciarSessio() throws IOException {
 		System.out.println();
 		System.out.println("-".repeat(43));
 		System.out.println("-".repeat(14) + "Iniciar sessi�" + "-".repeat(15));
@@ -183,7 +183,7 @@ public class IniciarSessio {
 //			} while (!troba);
 //		}
 
-	public void menu(String infoUser[]) {
+	public void menu(String infoUser[]) throws IOException {
 		int accio = Accio.menuAccio();
 		int llista = 0;
 		if (accio != 3) {

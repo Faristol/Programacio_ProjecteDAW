@@ -1,17 +1,18 @@
 package com.project.main;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ProgramaPrincipal {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		ProgramaPrincipal programa = new ProgramaPrincipal();
 		programa.inici();
 	}
 
-	public void inici() {
+	public void inici() throws IOException {
 		int acces = menuInici();
 		if (acces == 1) {
 			File f = new File("infoUsuaris.txt");
@@ -28,7 +29,7 @@ public class ProgramaPrincipal {
 	}
 
 	@SuppressWarnings("resource")
-	public void menuIniciSessio() {
+	public void menuIniciSessio() throws IOException {
 		System.out.println();
 		System.out.println("-".repeat(43));
 		System.out.println("Qué desitja fer?");
