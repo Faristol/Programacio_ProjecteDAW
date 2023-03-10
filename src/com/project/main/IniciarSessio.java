@@ -28,6 +28,9 @@ public class IniciarSessio {
 		llistesGenerals.carregarArrayListPelisGeneral();
 		llistesGenerals.carregarArrayListActorsGeneral();
 		llistesGenerals.carregarArrayListDirectorsGeneral();
+		Usuari.carregarArrayListPelisUsuari(infoUser[3], infoUser[2]);
+		Usuari.carregarArrayListActorsUsuari(infoUser[3], infoUser[2]);
+		Usuari.carregarArrayListDirectorsUsuari(infoUser[3], infoUser[2]);
 		menu(infoUser);
 	}
 
@@ -116,7 +119,7 @@ public class IniciarSessio {
 
 	}
 
-	public String[] infoUser(String nom) {
+	public static String[] infoUser(String nom) {
 		File f = new File("infoUsuaris.txt");
 		String[] infoUser = null;
 		try (Scanner llegir = new Scanner(f)) {

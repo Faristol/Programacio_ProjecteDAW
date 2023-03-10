@@ -1,5 +1,6 @@
 package com.project.main;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,7 +15,7 @@ import java.util.Scanner;
 public class Usuari extends Usuaris {
 	private String nom = null;
 	private String cognoms = null;
-	private String correuElectronic = null;
+	private static String correuElectronic = null;
 	private String contrassenya = null;
 	private String poblacio = null;
 	private String rol = null;
@@ -51,7 +52,7 @@ public class Usuari extends Usuaris {
 	}
 
 	public void setCorreuElectronic(String correuElectronic) {
-		this.correuElectronic = correuElectronic;
+		Usuari.correuElectronic = correuElectronic;
 	}
 
 	public String getContrassenya() {
@@ -95,7 +96,7 @@ public class Usuari extends Usuaris {
 	}
 
 	public void setPelisUsuari(ArrayList<Pelis> pelisUsuari) {
-		this.pelisUsuari = pelisUsuari;
+		Usuari.pelisUsuari = pelisUsuari;
 	}
 
 	public ArrayList<Actors> getActorsUsuari() {
@@ -103,7 +104,7 @@ public class Usuari extends Usuaris {
 	}
 
 	public void setActorsUsuari(ArrayList<Actors> actorsUsuari) {
-		this.actorsUsuari = actorsUsuari;
+		Usuari.actorsUsuari = actorsUsuari;
 	}
 
 	public ArrayList<Directors> getDirectorsUsuari() {
@@ -111,7 +112,7 @@ public class Usuari extends Usuaris {
 	}
 
 	public void setDirectorsUsuari(ArrayList<Directors> directorsUsuari) {
-		this.directorsUsuari = directorsUsuari;
+		Usuari.directorsUsuari = directorsUsuari;
 	}
 
 	// public static aix�, quan l'usuari inicie sessi� no caldr� recuperar la
@@ -239,19 +240,24 @@ public class Usuari extends Usuaris {
 			int valorafegir = 0;
 			boolean troba = false;
 			do {
-				System.out.println("Introdueix un nombre enter.");
-				valorafegir = entrada.nextInt();
+				System.out.println("Introdueix un nombre enter per a que seleccione el que vols guardar en la teua llista personal.");
+				System.out.println(pelisUsuari.size());
 				if (!entrada.hasNextInt()) {
-					System.out.println("Has d'introduïr un nombre enter.");
-				} else if (valorafegir< 0 || valorafegir > pelisUsuari.size()) {
+					System.out.println("Introdueix un nombre enter.");
+				} else if (valorafegir< 0) {
 					System.out.println("El nombre no correspon a cap pelicul·la.");
 				} else {
+					valorafegir = entrada.nextInt();
 					troba = true;
 				}
 			} while(!troba);
-			FileWriter fw = new FileWriter("carpetesUsuari/"+id+nom+"/llistaPelis.llista", true);
-			fw.write(pelisUsuari.get(valorafegir) + "\n");
-			fw.close();
+		
+			FileWriter fw = new FileWriter("carpetesUsuaris/"+id+nom+"/llistaPelis.llista", true);
+			BufferedWriter bf = new BufferedWriter(fw);
+			bf.write(LlistesGenerals.pelisGenerals.get(valorafegir) + "\n");
+			bf.flush();
+			bf.close();
+			guardarArrayListPelisUsuari(pelisUsuari, id, correuElectronic);
 		}catch (FileNotFoundException e) {
 			System.out.println("Error al leer el archivo.");
 		}
@@ -291,21 +297,25 @@ public class Usuari extends Usuaris {
 			boolean troba = false;
 			
 			do {
-				System.out.println("Introdueix un nombre enter.");
-				valorafegir = entrada.nextInt();
+				System.out.println("Introdueix un nombre enter per a que seleccione el que vols guardar en la teua llista personal.");
 				if (!entrada.hasNextInt()) {
 					System.out.println("Has d'introduïr un nombre enter.");
-				} else if (valorafegir< 0 || valorafegir > actorsUsuari.size()) {
+				} else if (valorafegir< 0) {
 					System.out.println("El nombre no correspon a cap actor.");
 				} else {
 					troba = true;
+					valorafegir = entrada.nextInt();
+
 				}
 			} while(!troba);
 			
 			FileWriter fw = new FileWriter("carpetesUsuari/"+id+nom+"/llistaActors.llista", true);
-			fw.write(actorsUsuari.get(valorafegir) + "\n");
-			fw.close();
-			
+			BufferedWriter bf = new BufferedWriter(fw);
+
+			bf.write(LlistesGenerals.actorsGenerals.get(valorafegir) + "\n");
+			bf.flush();
+			bf.close();
+			guardarArrayListActorsUsuari(actorsUsuari, id, correuElectronic);
 		} catch (FileNotFoundException e) {
 			System.out.println("Error al leer el archivo.");
 		}
@@ -348,20 +358,24 @@ public class Usuari extends Usuaris {
 			boolean troba = false;
 			
 			do {
-				System.out.println("Introdueix un nombre enter.");
-				valorafegir = entrada.nextInt();
+				System.out.println("Introdueix un nombre enter per a que seleccione el que vols guardar en la teua llista personal.");
 				if (!entrada.hasNextInt()) {
 					System.out.println("Has d'introduïr un nombre enter.");
-				} else if (valorafegir< 0 || valorafegir > directorsUsuari.size()) {
+				} else if (valorafegir< 0 ) {
 					System.out.println("El nombre no correspon a cap director.");
 				} else {
+					valorafegir = entrada.nextInt();
 					troba = true;
 				}
 			} while(!troba);
-			FileWriter fw = new FileWriter("carpetesUsuari/"+id+nom+"/llistaDirectors.llista", true);
-			fw.write(directorsUsuari.get(valorafegir) + "\n");
-			fw.close();
-			
+			FileWriter fw = new FileWriter("carpetesUsuaris/"+id+nom+"/llistaDirectors.llista", true);
+			BufferedWriter bf = new BufferedWriter(fw);
+			bf.write(LlistesGenerals.directorsGenerals.get(valorafegir) + "\n");
+			bf.flush();
+			bf.close();
+			String[] valor=IniciarSessio.infoUser(nom);
+			guardarArrayListDirectorsUsuari(directorsUsuari, id, valor[2]);
+
 		} catch (FileNotFoundException e) {
 			System.out.println("Error al leer el archivo.");
 		}
@@ -393,6 +407,7 @@ public class Usuari extends Usuaris {
 //
 //	}
 
+	@SuppressWarnings("static-access")
 	public void creacioCarpetaFitxer() {
 		File carpetaUsuari = new File(
 				"carpetesUsuaris/" + this.id + this.correuElectronic.substring(0, correuElectronic.indexOf("@")));
@@ -453,7 +468,7 @@ public class Usuari extends Usuaris {
 		super();
 		this.nom = nom;
 		this.cognoms = cognoms;
-		this.correuElectronic = correuElectronic;
+		Usuari.correuElectronic = correuElectronic;
 		this.contrassenya = contrassenya;
 		this.poblacio = poblacio;
 		this.dataNaixement = dataNaixement;

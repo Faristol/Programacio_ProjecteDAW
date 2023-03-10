@@ -135,7 +135,6 @@ public class LlistesGenerals implements Serializable {
 
 
 	public void consultarPeliGeneral() {
-		carregarArrayListPelisGeneral();
 			System.out.println("Llista de les pelicul·les:");
 
 			for (Pelis peli : LlistesGenerals.pelisGenerals) {
@@ -144,7 +143,6 @@ public class LlistesGenerals implements Serializable {
 		}
 	
 	public void consultarActorGeneral(){
-		carregarArrayListActorsGeneral();
 		System.out.println("Llista dels actors:");
 
 		for (Actors actor : LlistesGenerals.actorsGenerals) {
@@ -153,7 +151,6 @@ public class LlistesGenerals implements Serializable {
 	}
 	
 	public void consultarDirectorGeneral() { 
-		carregarArrayListDirectorsGeneral();
 		System.out.println("Llista dels directors:");
 		 for (Directors director : LlistesGenerals.directorsGenerals) {
 	            System.out.println(director.getNomDirector()+" "+director.getCognomsDirector()+" "+director.getDataNaixementDirector());
